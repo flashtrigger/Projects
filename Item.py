@@ -14,14 +14,15 @@ class Item:
         self.traits = args[7]
         self.type = args[8]
 
-        if self.category == "Weapon":
+        if self.category == "Weapon":  # TODO: divide into subclasses
             self.group = args[9]
             self.damage = args[10]
             self.dType = args[11]
             self.hands = args[12]
+            self.specialization = args[13]
             if self.type == "Ranged":
-                self.range = args[13]
-                self.reload = args[14]
+                self.range = args[14]
+                self.reload = args[15]
         elif self.category == "Armor" or "Shield":
             self.AC = args[9]
             self.speedPenalty = args[10]

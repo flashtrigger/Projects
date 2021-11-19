@@ -1,0 +1,26 @@
+class Spell:
+
+    def __init__(self, *args):
+
+        self.name = args[1]
+        self.numActions = args[2]
+        self.description = args[3]
+        self.traits = args[4]
+        self.level = args[5]
+        self.rarity = args[6]
+        self.tradition = args[7]
+        self.school = args[8]
+        self.components = args[9]
+        self.trigger = args[10]
+        self.duration = args[11]
+        self.damage = args[12]
+        self.dType = args[13]
+        self.save = args[14]
+        self.target = args[15]
+        self.range = args[16]
+        self.area = args[17]
+        self.save = args[18]
+        self.isCantrip = args[19]
+        self.isFocus = args[20]
+        self.canHeighten = args[21]
+        self.isInnate = args[22]

@@ -20,3 +20,7 @@ def setProfBonus(proficiency):
         return 8
     else:
         return 0
+
+
+def test(this):  # TODO: code something
+    print(this.name+". "+this.description)
