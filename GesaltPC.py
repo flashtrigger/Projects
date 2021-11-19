@@ -13,5 +13,6 @@ class GesaltPC:
         self.AC, self.meleeATK, self.rangeATK, self.spellATK, self.initiative = 0, 0, 0, 0, 0
 
 
+
 # TODO: addItems method
 # TODO: addTraits method

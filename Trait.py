@@ -1,4 +1,4 @@
-class Trait:
+class Trait: # TODO: add self.type and update main
 
     def __init__(self, *args):
 
