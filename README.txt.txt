@@ -1,1 +1,0 @@
-GOAL : gesalt character manager for self
