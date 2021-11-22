@@ -22,6 +22,5 @@ def setProfBonus(proficiency):
         return 0
 
 
-
 def test(this):
     print(this.name+". "+this.description)

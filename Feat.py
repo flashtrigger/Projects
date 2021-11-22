@@ -16,4 +16,3 @@ class Feat:
             for x in range(0, num):
                 self.actions[x] = args[i]
                 i += 1
-

@@ -10,6 +10,7 @@ class GesaltPC:
         self.STRmod, self.DEXmod, self.CONmod, self.INTmod, self.WISmod, self.CHAmod = 0, 0, 0, 0, 0, 0
         self.fort, self.ref, self.will, self.classDCBonus, self.spellBonus = 0, 0, 0, 0, 0
         self.actions, self.feats, self.skills, self.equipment, self.worn = [], [], [], [], []
+
         self.AC, self.meleeATK, self.rangeATK, self.spellATK, self.initiative = 0, 0, 0, 0, 0
 
 
