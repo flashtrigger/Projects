@@ -1,4 +1,4 @@
-import Functions
+import Functions as Foo
 
 
 class Class:
@@ -6,7 +6,8 @@ class Class:
     def __init__(self, *args):
         self.name = args[0]
         self.stat = args[1]
-        self.specialty = args[2]
         self.hitDie = args[3]
         self.proficiency = args[4]
-        self.bonus = Functions.setProfBonus(self.proficiency)
+        self.bonus = Foo.setProfBonus(self.proficiency)  # integer
+        self.specialty = args[5]  # class ability or null
+        self.classAbilities = args[6]  # list of class abilities

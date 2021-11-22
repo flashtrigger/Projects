@@ -1,7 +1,7 @@
 from Action import Action
 
 
-# adds an action to calling feat, skill, ability
+# adds an action to calling feat, skill, ability # depreciated
 def addAction(*args):
 
     anAction = Action(args[0], args[1], args[2])
@@ -22,5 +22,5 @@ def setProfBonus(proficiency):
         return 0
 
 
-def test(this):  # TODO: code something
+def test(this):
     print(this.name+". "+this.description)

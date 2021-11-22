@@ -1,20 +1,18 @@
-import Functions
-
-
-class feat:
+class Feat:
 
     def __init__(self, *args):
 
-        if len(args) >= 4:
-            self.type = args[0]
-            self.name = args[1]
-            self.description = args[2]
-            self.traits = args[3]
+        length = len(args)
+        self.type = args[0]
+        self.name = args[1]
+        self.description = args[2]
+        self.traits = args[3]
+        self.level = args[4]  # integer
 
-        if len(args) >= 7:  # creates actions attached to self
-            self.newActions = []
-            num = int((len(args) - 4) / 3)
-            i = len(args)
-            for x in range(1, num):
-                self.newActions[x] = Functions.addAction(args[i], args[i+1], args[i+2])
-                i += 3
+        if length >= 6:  # actions
+            num = length - 5
+            i = 5
+            self.actions = []  # list of actions
+            for x in range(0, num):
+                self.actions[x] = args[i]
+                i += 1

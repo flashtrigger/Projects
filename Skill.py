@@ -1,22 +1,18 @@
-import Functions
-
-
 class Skill:
 
     def __init__(self, *args):
 
-        if len(args) >= 4:
-            self.name = args[0]
-            self.stat = args[1]
-            self.type = args[2]
-            self.proficiency = args[3]
-            self.bonus = args[4]
+        length = len(args)
+        self.name = args[0]
+        self.stat = args[1]
+        self.type = args[2]
+        self.proficiency = args[3]
+        self.bonus = args[4]
 
-        if len(args) >= 8:  # creates actions attached to self
-            self.newActions = []
-            num = int((len(args) - 5) / 3)
-            i = len(args)
-            for x in range(1, num):
-                self.newActions[x] = Functions.addAction(args[i], args[i + 1], args[i + 2])
-                i += 3
-
+        if length >= 6:  # actions beyond this parameter
+            num = length - 5
+            self.actions = []  # list of actions
+            i = 5
+            for x in range(0, num):
+                self.actions[x] = args[i]
+                i += 1
