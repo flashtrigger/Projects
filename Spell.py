@@ -1,3 +1,6 @@
+from Trait import *
+
+
 class Spell:
 
     def __init__(self, *args):
@@ -16,7 +19,30 @@ class Spell:
         self.target = args[11]
         self.range = args[12]
         self.area = args[13]
-        self.save = args[14]
-        self.isFocus = args[15]  # boolean
+        self.isFocus = args[14]  # boolean
+        self.isInnate = args[15]  # boolean
         self.canHeighten = args[16]  # boolean
-        self.isInnate = args[17]  # boolean
+        if self.canHeighten:
+            self.heightened = args[17]
+            if self.isInnate:
+                self.uses = args[18]
+        elif self.isInnate:
+            self.uses = args[17]
+
+
+spellELECTRICARC = Spell("Electric Arc", 2,
+                         "An arc of lightning leaps from one target to another. You deal electricity damage equal to "
+                         "1d4 plus your spellcasting ability modifier.",
+                         [traitCOMMON, traitCANTRIP, traitELECTRICITY, traitEVOCATION, traitARCANE, traitPRIMAL],
+                         1, "Somatic, Verbal", None, None, "1d4+stat", "Electricity", "Basic Reflex",
+                         "1 or 2 Creatures", "30 ft", None, False, False, True, "(+1) 1d4")
+
+spellELECTRICARC_featDS = Spell("Electric Arc", 2,
+                                "An arc of lightning leaps from one target to another. You deal electricity damage "
+                                "equal to 1d4 plus your spellcasting ability modifier.",
+                                [traitCOMMON, traitCANTRIP, traitELECTRICITY, traitEVOCATION, traitARCANE, traitPRIMAL,
+                                 traitMANIPULATE, traitMAGICAL, traitCONCENTRATE],
+                                1, "Somatic, Verbal", None, None, "1d4+stat", "Electricity", "Basic Reflex",
+                                "1 or 2 Creatures", "30 ft", None, False, True, True, "(+1) 1d4", "At-Will")
+
+# spell = Spell("", 2, "", [], 1, "", "", 1, "", "", "", "", "", "", "", False, False, False)
