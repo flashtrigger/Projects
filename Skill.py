@@ -1,4 +1,4 @@
-class Skill:
+class Skill:  # TODO: skill actions
 
     def __init__(self, *args):
 
@@ -8,11 +8,5 @@ class Skill:
         self.type = args[2]
         self.proficiency = args[3]
         self.bonus = args[4]
-
-        if length >= 6:  # actions beyond this parameter
-            num = length - 5
-            self.actions = []  # list of actions
-            i = 5
-            for x in range(0, num):
-                self.actions[x] = args[i]
-                i += 1
+        self.actions = args[5]  # list of actions
+        self.activities = args[6]

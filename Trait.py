@@ -7,7 +7,7 @@ class Trait:
         self.type = args[2]
 
 
-traitNULL = Trait("null", "null", "null")  # so functions don't freak out for instances with no traits
+#  if needed - traitNONE = Trait("None", "None", "None")  # so functions don't freak out for instances with no traits
 
 # TODO: untyped traits
 traitARCHETYPE = Trait("Archetype", "This feat belongs to an archetype.", "Untyped")
@@ -25,9 +25,14 @@ traitCLASS = Trait("Class", "Archetypes with the class trait fundamentally diver
                             "rules on how it changes your class. If you select this ability, you must take that "
                             "archetype's dedication feat at 2nd level, and you proceed normally afterward. You can "
                             "never have more than one class archetype.", "Untyped")
+traitCONCENTRATE = Trait("Concentrate", "An action with this trait requires a degree of mental concentration and "
+                                        "discipline.", "untyped")
 traitGENERAL = Trait("General", "A type of feat that any character can select, regardless of ancestry and class, "
                                 "as long as they meet the prerequisites. You can select a feat with this trait when "
                                 "your class grants a general feat.", "Untyped")
+traitMANIPULATE = Trait("Manipulate", "You must physically manipulate an item or make gestures to use an action with "
+                                      "this trait. Creatures without a suitable appendage can’t perform actions with "
+                                      "this trait. Manipulate actions often trigger reactions.", "Untyped")
 traitMAGICAL = Trait("Magical", "Something with the magical trait is imbued with magical energies not tied to a "
                                 "specific tradition of magic. A magical item radiates a magic aura infused with its "
                                 "dominant school of magic. Some items or effects are closely tied to a particular "
@@ -46,6 +51,7 @@ traitPRESS = Trait("Press", "Actions with this trait allow you to follow up earl
 traitMULTICLASS = Trait("Multiclass", "Archetypes with the multiclass trait represent diversifying your training into "
                                       "another class’s specialties. You can’t select a multiclass archetype’s "
                                       "dedication feat if you are a member of the class of the same name.", "Untyped")
+traitSECRET = Trait("Secret", "The GM rolls the check for this ability in secret.", "Untyped")
 traitFLOURISH = Trait("Flourish", "Flourish actions are actions that require too much exertion to perform a large "
                                   "number in a row. You can use only 1 action with the flourish trait per turn.",
                       "Untyped")
@@ -144,6 +150,23 @@ traitUNCOMMON = Trait("Uncommon", "Something of uncommon rarity requires special
                                   "of Recall Knowledge checks related to these creature is increased by 2.", "Rarity")
 traitUNIQUE = Trait("Unique", "A rules element with this trait is one-of-a-kind. The DC of Recall Knowledge checks "
                               "related to creatures with this trait is increased by 10.", "Rarity")
+
+# Senses
+traitAUDITORY = Trait("Auditory", "Auditory actions and effects rely on sound. An action with the auditory trait can "
+                                  "be successfully performed only if the creature using the action can speak or "
+                                  "otherwise produce the required sounds. A spell or effect with the auditory trait "
+                                  "has its effect only if the target can hear it. This applies only to sound-based "
+                                  "parts of the effect, as determined by the GM. This is different from a sonic "
+                                  "effect, which still affects targets who can't hear it (such as deaf targets) as "
+                                  "long as the effect itself makes sound.", "Senses")
+traitOLFACTORY = Trait("Olfactory", "An olfactory effect can affect only creatures that can smell it. This applies "
+                                    "only to olfactory parts of the effect, as determined by the GM.", "Senses")
+traitVISUAL = Trait("Visual", "A visual effect can affect only creatures that can see it. This applies only to "
+                              "visible parts of the effect, as determined by the GM.", "Senses")
+
+# TODO: school traits
+traitEVOCATION = Trait("Evocation", "Effects and magic items with this trait are associated with the evocation school "
+                                    "of magic, typically involving energy and elemental forces.", "School")
 
 # Tradition
 traitARCANE = Trait("Arcane", "This magic comes from the arcane tradition, which is built on logic and rationality. "

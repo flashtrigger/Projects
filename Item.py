@@ -8,4 +8,5 @@ class Item:
         self.value = args[4]  # float
         self.level = args[5]  # integer
         self.traits = args[6]  # list of Traits
-        self.type = args[7]
+        self.actions = args[7]  # list of Actions
+        self.type = args[8]

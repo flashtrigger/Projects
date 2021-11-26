@@ -2,17 +2,11 @@ class Feat:
 
     def __init__(self, *args):
 
-        length = len(args)
         self.type = args[0]
         self.name = args[1]
         self.description = args[2]
-        self.traits = args[3]
-        self.level = args[4]  # integer
+        self.level = args[3]  # integer
+        self.traits = args[4]  # list of Traits
+        self.spells = args[5]  # list of Spells
+        self.actions = args[6]  # list of Actions
 
-        if length >= 6:  # actions
-            num = length - 5
-            i = 5
-            self.actions = []  # list of actions
-            for x in range(0, num):
-                self.actions[x] = args[i]
-                i += 1
