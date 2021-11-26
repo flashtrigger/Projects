@@ -2,7 +2,6 @@ class Skill:  # TODO: skill actions
 
     def __init__(self, *args):
 
-        length = len(args)
         self.name = args[0]
         self.stat = args[1]
         self.type = args[2]

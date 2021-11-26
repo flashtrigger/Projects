@@ -20,14 +20,16 @@ class Background:
 DexInt = ["Dexterity", "Intelligence"]
 Free = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 
+# TODO: initialize default skill objects
+# TODO: initialize default feat objects
 backgroundCRIMINAL = Background("Criminal"
                                 , "As an unscrupulous independent or as a member of an underworld organization, "
                                   "you lived a life of crime. You might have become an adventurer to seek redemption, "
                                   "to escape the law, or simply to get access to bigger and better loot. "
                                 , [DexInt, Free]
-                                , []  # TODO: initialize default skill objects
+                                , []
                                 , "Underworld"
-                                , []  # TODO: initialize default feat objects
+                                , []
                                 , [traitCOMMON]
                                 , [])
 
