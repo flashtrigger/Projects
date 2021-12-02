@@ -1,4 +1,5 @@
-from Action import Action
+from Action import Action  # TODO: Retire Functions?
+# DONE Phase 1? - 11/30/21 still alive
 
 
 # adds an action to calling feat, skill, ability # depreciated
@@ -8,7 +9,7 @@ def addAction(*args):
     return anAction
 
 
-# get self.proficiency, returns proficiency bonus
+# get self.proficiency, returns proficiency bonus # depreciated
 def setProfBonus(proficiency):
     if proficiency == "Trained":
         return 2

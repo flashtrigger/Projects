@@ -1,4 +1,4 @@
-class Currency:
+class Currency:  # DONE Phase 1!
 
     def __init__(self, *args):
 

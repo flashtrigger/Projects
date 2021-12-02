@@ -1,4 +1,4 @@
-from Trait import *  # Done?
+from Trait import *  # DONE Phase 1!
 
 
 class Ancestry:

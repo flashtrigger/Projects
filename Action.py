@@ -1,8 +1,8 @@
 from Trait import *
 
 
-# 306 - Specialty Basic
-class Action:
+# 306 - Specialty Basic ; 389 - Class ; 411 - Feat
+class Action:  # DONE Phase 1?
 
     def __init__(self, *args):
         """
@@ -20,6 +20,7 @@ class Action:
         self.critSuccess = args[8]
         self.requirements = args[9]
         self.trigger = args[10]
+        self.frequency = ""
 
 
 # basic actions
@@ -384,6 +385,114 @@ actionPOINTOUT = Action("Point Out"
                         , None
                         , "A creature is undetected by one or more of your allies but isn’t undetected by you."
                         , None)
+
+# class actions
+# Ranger
+actionHUNTPREY = Action("Hunt Prey"
+                        , 1
+                        , "You designate a single creature as your prey and focus your attacks against that creature. "
+                          "You must be able to see or hear the prey, or you must be tracking the prey during "
+                          "exploration.\nYou gain a +2 circumstance bonus to Perception checks when you Seek your "
+                          "prey and a +2 circumstance bonus to Survival checks when you Track your prey. You also "
+                          "ignore the penalty for making ranged attacks within your second range increment against "
+                          "the prey you’re hunting.\nYou can have only one creature designated as your prey at a "
+                          "time. If you use Hunt Prey against a creature when you already have a creature designated, "
+                          "the prior creature loses the designation and the new prey gains the designation. Your "
+                          "designation lasts until your next daily preparations. "
+                        , [traitCONCENTRATE, traitRANGER]
+                        , "Encounter"
+                        , None
+                        , None
+                        , None
+                        , None
+                        , None
+                        , None)
+
+# Feat Actions
+# Double Slice
+actionDOUBLESLICE = Action("Double Slice"
+                           , 2
+                           , "You lash out at your foe with both weapons. Make two Strikes, one with each of your two "
+                             "melee weapons, each using your current multiple attack penalty. Both Strikes must have "
+                             "the same target. If the second Strike is made with a weapon that doesn't have the agile "
+                             "trait, it takes a –2 penalty.\nIf both attacks hit, combine their damage, and then add "
+                             "any other applicable effects from both weapons. You add any precision damage only once, "
+                             "to the attack of your choice. Combine the damage from both Strikes and apply "
+                             "resistances and weaknesses only once. This counts as two attacks when calculating your "
+                             "multiple attack penalty. "
+                           , [traitATTACK, traitFIGHTER]
+                           , "Encounter"
+                           , None
+                           , None
+                           , None
+                           , None
+                           , "You are wielding two melee weapons, each in a different hand."
+                           , None)
+
+# Hunted Shot
+actionHUNTEDSHOT = Action("Hunted Shot"
+                          , 1
+                          , "You take two quick shots against the one you hunt. Make two Strikes against your prey "
+                            "with the required weapon. If both hit the same creature, combine their damage for the "
+                            "purpose of resistances and weaknesses. Apply your multiple attack penalty to each Strike "
+                            "normally. "
+                          , [traitFLOURISH, traitRANGER]
+                          , "Encounter"
+                          , None
+                          , None
+                          , None
+                          , None
+                          , "You are wielding a ranged weapon with reload 0."
+                          , None)
+actionHUNTEDSHOT.frequency = "Once per round"
+
+# monster hunter
+actionHUNTPREY_MH = Action("Hunt Prey: Free Recall"
+                           , 0
+                           , "You swiftly assess your prey and apply what you know. As part of the action used to "
+                             "Hunt your Prey, you can attempt a check to Recall Knowledge about your prey. When you "
+                             "critically succeed at identifying your hunted prey with Recall Knowledge, you note a "
+                             "weakness in the creature’s defenses. You and allies you tell gain a +1 circumstance "
+                             "bonus to your next attack roll against that prey. You can give bonuses from Monster "
+                             "Hunter only once per day against a particular creature. "
+                           , [traitRANGER]
+                           , "Encounter"
+                           , None
+                           , None
+                           , None
+                           , None
+                           , None
+                           , None)
+
+# Nimble Dodge
+actionNIMBLEDODGE = Action("Nimble Dodge"
+                           , -1
+                           , "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the "
+                             "triggering attack. "
+                           , [traitROGUE, traitSWASHBUCKLER]
+                           , "Encounter"
+                           , None
+                           , None
+                           , None
+                           , None
+                           , "You are not encumbered."
+                           , "A creature targets you with an attack and you can see the attacker.")
+
+# orc ferocity
+actionORCFEROCITY = Action("Orc Ferocity"
+                           , -1
+                           , "Fierceness in battle runs through your blood, and you refuse to fall from your "
+                             "injuries. You avoid being knocked out and remain at 1 Hit Point, and your wounded "
+                             "condition increases by 1. "
+                           , [traitORC]
+                           , "Encounter"
+                           , None
+                           , None
+                           , None
+                           , None
+                           , None
+                           , "You would be reduced to 0 Hit Points but not immediately killed.")
+actionORCFEROCITY.frequency = "Once per day"
 
 action = Action(""
                 , 1

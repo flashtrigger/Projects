@@ -1,7 +1,7 @@
 from Trait import *
 
 
-class Heritage:
+class Heritage:  # DONE Phase 1!
 
     def __init__(self, *args):
 

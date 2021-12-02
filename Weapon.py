@@ -10,6 +10,9 @@ class Weapon(Item):
         self.dType = args[11]
         self.hands = args[12]
         self.specialization = args[13]
-        if self.type == "Ranged":
+        if self.type == "Ranged":  # TODO: Subclass RangedWeapon?
             self.range = args[14]
             self.reload = args[15]
+
+#  TODO: Initialize necessary weapons, after picking
+
