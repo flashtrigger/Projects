@@ -1,15 +1,14 @@
 from SkillAction import *
-from Proficiency import Proficiency
+from Variables import Proficiency
 
 
-class Skill:  # DONE Phase 1!
+class Skill:
 
     def __init__(self, *args):
         self.name = args[0]
         self.stat = args[1]
         self.description = args[2]
-        self.type = "Skill"
-        self.proficiency = Proficiency.UNTRAINED
+        self.proficiency = Proficiency.Untrained
         self.bonus = 0
         self.actions = args[3]  # list of actions
 
@@ -103,3 +102,7 @@ skillSURVIVAL = Skill("Survival", "Wisdom"
 skillTHIEVERY = Skill("Thievery", "Dexterity"
                       , "You are trained in a particular set of skills favored by thieves and miscreants"
                       , [actionPALMOBJECT, actionSTEAL, actionDISABLEDEVICE, actionPICKLOCK])
+
+skillPACKAGE = [skillACROBATICS, skillARCANA, skillATHLETICS, skillCRAFTING, skillDECEPTION, skillDIPLOMACY,
+                skillINTIMIDATION, skillLORE, skillMEDICINE, skillNATURE, skillOCCULTISM, skillPERFORMANCE,
+                skillRELIGION, skillSOCIETY, skillSTEALTH, skillSURVIVAL, skillTHIEVERY]

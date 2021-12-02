@@ -13,13 +13,12 @@ class Action:  # DONE Phase 1?
         self.numActions = args[1]  # integer, -1 = reaction, 0 = free
         self.description = args[2]
         self.traits = args[3]  # list of Traits
-        self.type = args[4]  # encounter/exploration
-        self.critFail = args[5]
-        self.fail = args[6]
-        self.success = args[7]
-        self.critSuccess = args[8]
-        self.requirements = args[9]
-        self.trigger = args[10]
+        self.critFail = args[4]
+        self.fail = args[5]
+        self.success = args[6]
+        self.critSuccess = args[7]
+        self.requirements = args[8]
+        self.trigger = args[9]
         self.frequency = ""
 
 
@@ -35,7 +34,6 @@ actionAID = Action("Aid"
                      "Aid reaction depending on the situation, or even allow you to Aid checks other than "
                      "skill checks and attack rolls."
                    , []
-                   , "Encounter"
                    , "Your ally takes a –1 circumstance penalty to the triggering check."
                    , None
                    , "You grant your ally a +1 circumstance bonus to the triggering check."
@@ -48,7 +46,6 @@ actionCRAWL = Action("Crawl"
                      , 1
                      , "You move 5 feet by crawling and continue to stay prone."
                      , [traitMOVE]
-                     , "Encounter"
                      , None
                      , None
                      , None
@@ -71,7 +68,6 @@ actionDELAY = Action("Delay"
                        "Essentially, you can’t Delay to avoid negative consequences that would happen on your turn or "
                        "to extend beneficial effects that would end on your turn. "
                      , []
-                     , "Encounter"
                      , None
                      , None
                      , None
@@ -83,7 +79,6 @@ actionDROPPRONE = Action("Drop Prone"
                          , 1
                          , "You fall prone."
                          , [traitMOVE]
-                         , "Encounter"
                          , None
                          , None
                          , None
@@ -101,7 +96,6 @@ actionESCAPE = Action("Escape"
                         "or other impediment. You can attempt an Acrobatics or Athletics check instead of using your "
                         "attack modifier if you choose (but this action still has the attack trait). "
                       , [traitATTACK]
-                      , "Encounter"
                       , "You don’t get free, and you can’t attempt to Escape again until your next turn."
                       , None
                       , "You get free and remove the grabbed, immobilized, and restrained conditions imposed by your "
@@ -117,7 +111,6 @@ actionINTERACT = Action("Interact"
                           "unattended or stored object, open a door, or produce some similar effect. You might have "
                           "to attempt a skill check to determine if your Interact action was successful. "
                         , [traitMANIPULATE]
-                        , "Encounter"
                         , None
                         , None
                         , None
@@ -135,7 +128,6 @@ actionLEAP = Action("Leap"
                     "horizontally onto an elevated surface. Jumping a greater distance requires using the Athletics "
                     "skill. "
                     , [traitMOVE]
-                    , "Encounter"
                     , None
                     , None
                     , None
@@ -154,7 +146,6 @@ actionREADY = Action("Ready"
                        "used Ready. This is one of the few times the multiple attack penalty applies when it’s not "
                        "your turn. "
                      , [traitCONCENTRATE]
-                     , "Encounter"
                      , None
                      , None
                      , None
@@ -172,7 +163,6 @@ actionRELEASE = Action("Release"
                        "(such as Attack of Opportunity). If you want to prepare to Release something outside of your "
                        "turn, use the Ready activity. "
                        , [traitMANIPULATE]
-                       , "Encounter"
                        , None
                        , None
                        , None
@@ -195,7 +185,6 @@ actionSEEK = Action("Seek"
                       "imprecise sense or if an effect (such as invisibility) prevents the subject from being "
                       "observed. "
                     , [traitCONCENTRATE, traitSECRET]
-                    , "Encounter"
                     , None
                     , None
                     , "If you were searching for creatures, any undetected creature you succeeded against becomes "
@@ -218,7 +207,6 @@ actionSENSEMOTIVE = Action("Sense Motive"
                              "You typically can't try to Sense the Motive of the same creature again until the "
                              "situation changes significantly. "
                            , [traitCONCENTRATE, traitSECRET]
-                           , "Encounter"
                            , "You get a false sense of the creature’s intentions."
                            , "You detect what a deceptive creature wants you to believe. If they’re not being "
                              "deceptive, you believe they’re behaving normally. "
@@ -231,9 +219,8 @@ actionSENSEMOTIVE = Action("Sense Motive"
 
 actionSTAND = Action("Stand"
                      , 1
-                     , ""
-                     , [traitMOVE]
                      , "You stand up from prone."
+                     , [traitMOVE]
                      , None
                      , None
                      , None
@@ -248,7 +235,6 @@ actionSTEP = Action("Step"
                       "entering a square. You can't Step into difficult terrain, and you can't Step using a Speed "
                       "other than your land Speed. "
                     , [traitMOVE]
-                    , "Encounter"
                     , None
                     , None
                     , None
@@ -260,7 +246,6 @@ actionSTRIDE = Action("Stride"
                       , 1
                       , "You move up to your Speed."
                       , [traitMOVE]
-                      , "Encounter"
                       , None
                       , None
                       , None
@@ -277,7 +262,6 @@ actionSTRIKE = Action("Strike"
                       "creature's AC to determine the effect. See Attack Rolls and Damage for details on calculating "
                       "your attack and damage rolls. "
                       , [traitATTACK]
-                      , "Encounter"
                       , None
                       , None
                       , "You deal damage according to the weapon or unarmed attack, including any modifiers, bonuses, "
@@ -296,7 +280,6 @@ actionTAKECOVER = Action("Take Cover"
                            "current space, use an attack action, become unconscious, or end this effect as a free "
                            "action. "
                          , []
-                         , "Encounter"
                          , None
                          , None
                          , None
@@ -312,7 +295,6 @@ actionAVERTGAZE = Action("Avert gaze"
                            "abilities that require you to look at a creature or object, such as a medusa's petrifying "
                            "gaze. Your gaze remains averted until the start of your next turn. "
                          , []
-                         , "Encounter "
                          , None
                          , None
                          , None
@@ -340,7 +322,6 @@ actionGRABANEDGE = Action("Grab an Edge"
                             "stopping your fall. You must succeed at a Reflex save, usually at the Climb DC. If you "
                             "grab the edge or handhold, you can then Climb up using Athletics. "
                           , [traitMANIPULATE]
-                          , "Encounter"
                           , "You continue to fall, and if you’ve fallen 20 feet or more before you use this reaction, "
                             "you take 10 bludgeoning damage from the impact for every 20 feet fallen. "
                           , None
@@ -360,7 +341,6 @@ actionMOUNT = Action("Mount"
                      , "You move onto the creature and ride it. If you’re already mounted, you can instead use this "
                        "action to dismount, moving off the mount into a space adjacent to it. "
                      , [traitMOVE]
-                     , "Encounter"
                      , None
                      , None
                      , None
@@ -378,7 +358,6 @@ actionPOINTOUT = Action("Point Out"
                           "they must succeed at a Perception check against the creature's Stealth DC or they "
                           "misunderstand and believe the target is in a different location. "
                         , [traitAUDITORY, traitMANIPULATE, traitVISUAL]
-                        , "Encounter"
                         , None
                         , None
                         , None
@@ -400,7 +379,6 @@ actionHUNTPREY = Action("Hunt Prey"
                           "the prior creature loses the designation and the new prey gains the designation. Your "
                           "designation lasts until your next daily preparations. "
                         , [traitCONCENTRATE, traitRANGER]
-                        , "Encounter"
                         , None
                         , None
                         , None
@@ -421,7 +399,6 @@ actionDOUBLESLICE = Action("Double Slice"
                              "resistances and weaknesses only once. This counts as two attacks when calculating your "
                              "multiple attack penalty. "
                            , [traitATTACK, traitFIGHTER]
-                           , "Encounter"
                            , None
                            , None
                            , None
@@ -437,7 +414,6 @@ actionHUNTEDSHOT = Action("Hunted Shot"
                             "purpose of resistances and weaknesses. Apply your multiple attack penalty to each Strike "
                             "normally. "
                           , [traitFLOURISH, traitRANGER]
-                          , "Encounter"
                           , None
                           , None
                           , None
@@ -456,7 +432,6 @@ actionHUNTPREY_MH = Action("Hunt Prey: Free Recall"
                              "bonus to your next attack roll against that prey. You can give bonuses from Monster "
                              "Hunter only once per day against a particular creature. "
                            , [traitRANGER]
-                           , "Encounter"
                            , None
                            , None
                            , None
@@ -470,7 +445,6 @@ actionNIMBLEDODGE = Action("Nimble Dodge"
                            , "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the "
                              "triggering attack. "
                            , [traitROGUE, traitSWASHBUCKLER]
-                           , "Encounter"
                            , None
                            , None
                            , None
@@ -485,7 +459,6 @@ actionORCFEROCITY = Action("Orc Ferocity"
                              "injuries. You avoid being knocked out and remain at 1 Hit Point, and your wounded "
                              "condition increases by 1. "
                            , [traitORC]
-                           , "Encounter"
                            , None
                            , None
                            , None
@@ -498,7 +471,6 @@ action = Action(""
                 , 1
                 , ""
                 , []
-                , "Encounter"
                 , None
                 , None
                 , None

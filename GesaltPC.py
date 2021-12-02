@@ -14,6 +14,5 @@ class GesaltPC:  # DONE Phase 1?
         self.AC, self.meleeATK, self.rangeATK, self.spellATK, self.initiative = 0, 0, 0, 0, 0
 
 
-
 # P2TODO: addItems method
 # P2TODO: addTraits method

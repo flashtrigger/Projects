@@ -9,4 +9,6 @@ class Item:  # DONE Phase 1!
         self.level = args[5]  # integer
         self.traits = args[6]  # list of Traits
         self.actions = args[7]  # list of Actions
-        self.type = args[8]
+
+
+# p3TODO: initialize PHB items

@@ -6,12 +6,12 @@ class SkillAction(Action):  # DONE Phase 1!
 
     def __init__(self, *args):
         Action.__init__(self, *args)
-        self.untrained = args[11]
-        self.trained = args[12]
-        self.expert = args[13]
-        self.master = args[14]
-        self.legendary = args[15]
-        self.isTrained = args[16]  # boolean
+        self.untrained = args[10]
+        self.trained = args[11]
+        self.expert = args[12]
+        self.master = args[13]
+        self.legendary = args[14]
+        self.isTrained = args[15]  # boolean
 
 
 # acrobatics
@@ -21,7 +21,6 @@ actionBALANCE = SkillAction("Balance"
                             "You move across a narrow surface or uneven ground, attempting an Acrobatics check "
                             "against its Balance DC. You are flat-footed while on a narrow surface or uneven ground. "
                             , [traitMOVE]
-                            , "Encounter"
                             , "You fall and your turn ends."
                             ,
                             "You must remain stationary to keep your balance (wasting the action) or you fall. If you "
@@ -49,7 +48,6 @@ actionTUMBLETHROUGH = SkillAction("Tumble Through"
                                   "soon as you try to enter its space. You can Tumble Through using Climb, Fly, Swim, "
                                   "or another action instead of Stride in the appropriate environment. "
                                   , [traitMOVE]
-                                  , "Encounter"
                                   , None
                                   ,
                                   "Failure Your movement ends, and you trigger reactions as if you had moved out of "
@@ -76,7 +74,6 @@ actionMANEUVERINFLIGHT = SkillAction("Maneuver in Flight"
                                      "determines what maneuvers are possible, but they rarely allow you to move "
                                      "farther than your fly Speed. "
                                      , [traitMOVE]
-                                     , "Encounter"
                                      , "As failure, but the consequence is more dire."
                                      , "Your maneuver fails. The GM chooses if you simply can’t move or if some other "
                                        "detrimental effect happens. The outcome should be appropriate for the "
@@ -100,7 +97,6 @@ actionRECALLKNOWLEDGE = SkillAction("Recall Knowledge"
                                       "topic related to that skill. The GM determines the DCs for such checks and which"
                                       " skills apply. "
                                     , [traitCONCENTRATE, traitSECRET]
-                                    , "Encounter"
                                     , "You recall incorrect information or gain an erroneous or misleading clue. "
                                     , None
                                     , "You recall the knowledge accurately or gain a useful clue about your current "
@@ -123,7 +119,6 @@ activitySQUEEZE = SkillAction("Squeeze"
                               "This action is for exceptionally small spaces; many tight spaces are difficult terrain "
                               "that you can move through more quickly and without a check. "
                               , [traitEXPLORATION, traitMOVE]
-                              , "Exploration"
                               ,
                               "You become stuck in the tight space. While you’re stuck, you can spend 1 minute "
                               "attempting another Acrobatics check at the same DC. Any result on that check other "
@@ -153,7 +148,6 @@ activityDECIPHERWRITING = SkillAction("Decipher Writing"
                                       "might have you roll one check for a short text or a check for each section of "
                                       "a larger text. "
                                       , [traitCONCENTRATE, traitEXPLORATION, traitSECRET]
-                                      , "Exploration"
                                       ,
                                       "You believe you understand the text on that page, but you have in fact "
                                       "misconstrued its message. "
@@ -184,7 +178,6 @@ activityIDENTIFYMAGIC = SkillAction("Identify Magic"
                                     "to identify using this activity alone. Heightening a spell doesn't increase the "
                                     "DC to identify it. "
                                     , [traitCONCENTRATE, traitEXPLORATION, traitSECRET]
-                                    , "Exploration"
                                     , "You misidentify the magic as something else of the GM’s choice."
                                     , "You fail to identify the magic and can’t try again for 1 day."
                                     ,
@@ -222,7 +215,6 @@ activityLEARNASPELL = SkillAction("Learn a Spell"
                                     "your list; if you have a spell repertoire, you can select it when you add or "
                                     "swap spells. "
                                   , [traitCONCENTRATE, traitEXPLORATION]
-                                  , "Exploration"
                                   , "As failure, plus you expend half the materials."
                                   , "You fail to learn the spell but can try again after you gain a level. The "
                                     "materials aren't expended. "
@@ -245,7 +237,6 @@ activityBORROWARCANE = SkillAction("Borrow an Arcane Spell"
                                      "the DC for the check based on the spell’s level and rarity; it’s typically a "
                                      "bit easier than Learning the Spell. "
                                    , [traitCONCENTRATE, traitEXPLORATION]
-                                   , "Exploration"
                                    , None
                                    , "You fail to prepare the spell, but the spell slot remains available for you to "
                                      "prepare a different spell. You can’t try to prepare this spell until the next "
@@ -268,7 +259,6 @@ actionCLIMB = SkillAction("Climb"
                             "an Athletics check. The GM determines the DC based on the nature of the incline and "
                             "environmental circumstances. You’re flat-footed unless you have a climb Speed. "
                           , [traitMOVE]
-                          , "Encounter"
                           , "You fall. If you began the climb on stable ground, you fall and land prone."
                           , None
                           , "You move up, across, or safely down the incline for 5 feet per 20 feet of your land "
@@ -292,7 +282,6 @@ actionFORCEOPEN = SkillAction("Force Open"
                                 "through walls. Without a crowbar, prying something open takes a –2 item penalty to "
                                 "the Athletics check to Force Open. "
                               , [traitATTACK]
-                              , "Encounter"
                               , "Your attempt jams the door, window, container, or gate shut, imposing a –2 "
                                 "circumstance penalty on future attempts to Force it Open. "
                               , None
@@ -317,7 +306,6 @@ actionGRAPPLE = SkillAction("Grapple"
                               "check against the target's Fortitude DC. You can Grapple a target you already have "
                               "grabbed or restrained without having a hand free. "
                             , [traitATTACK]
-                            , "Encounter"
                             , "If you already had the target grabbed or restrained, it breaks free. Your target can "
                               "either grab you, as if it succeeded at using the Grapple action against you, "
                               "or force you to fall and land prone. "
@@ -345,7 +333,6 @@ actionHIGHJUMP = SkillAction("High Jump"
                                "fail your check. This DC might be increased or decreased due to the situation, "
                                "as determined by the GM. "
                              , [traitMOVE]
-                             , "Encounter"
                              , "You don’t Leap at all, and instead you fall prone in your space."
                              , "You Leap normally."
                              , "Increase the maximum vertical distance to 5 feet."
@@ -371,7 +358,6 @@ actionLONGJUMP = SkillAction("Long Jump"
                                "Stride, you automatically fail your check. This DC might be increased or decreased "
                                "due to the situation, as determined by the GM. "
                              , [traitMOVE]
-                             , "Encounter"
                              , "You Leap normally, but then fall and land prone."
                              , "You Leap normally."
                              , "Increase the maximum horizontal distance you Leap to the desired distance."
@@ -391,7 +377,6 @@ actionSHOVE = SkillAction("Shove"
                           , "You push a creature away from you. Attempt an Athletics check against your target's "
                             "Fortitude DC. "
                           , [traitATTACK]
-                          , "Encounter"
                           , "You lose your balance, fall, and land prone."
                           , None
                           , "You push your target back 5 feet. You can Stride after it, but you must move the same "
@@ -419,7 +404,6 @@ actionSWIM = SkillAction("Swim"
                            "current, as determined by the GM. However, if your last action on your turn was to enter "
                            "the water, you don’t sink or move with the current that turn. "
                          , [traitMOVE]
-                         , "Encounter"
                          , "You make no progress, and if you’re holding your breath, you lose 1 round of air."
                          , None
                          , "You move through the water 5 feet, plus 5 feet per 20 feet of your land Speed (a total of "
@@ -441,7 +425,6 @@ actionTRIP = SkillAction("Trip"
                          , "You try to knock a creature to the ground. Attempt an Athletics check against the "
                            "target’s Reflex DC. "
                          , [traitATTACK]
-                         , "Encounter"
                          , "You lose your balance and fall and land prone."
                          , None
                          , "The target falls and lands prone."
@@ -461,7 +444,6 @@ actionDISARM = SkillAction("Disarm"
                            , "You try to knock something out of a creature’s grasp. Attempt an Athletics check "
                              "against the target’s Reflex DC. "
                            , [traitATTACK]
-                           , "Encounter"
                            , "You lose your balance and become flat-footed until the start of your next turn"
                            , None
                            , "You weaken your target's grasp on the item. Until the start of that creature's turn, "
@@ -497,7 +479,6 @@ activityEARNINCOME = SkillAction("Earn Income"
                                    "the task. Most tasks last a week or two, though some can take months or even "
                                    "years. "
                                  , [traitDOWNTIME]
-                                 , "Downtime"
                                  , "You earn nothing for your work and are fired immediately. You can’t continue at "
                                    "the task. Your reputation suffers, potentially making it difficult for you to "
                                    "find rewarding jobs in that community in the future. "
@@ -525,7 +506,6 @@ activityREPAIR = SkillAction("Repair"
                                "about the same DC to Repair a given item as it is to Craft it in the first place. You "
                                "can’t Repair a destroyed item. "
                              , [traitEXPLORATION, traitMANIPULATE]
-                             , "Exploration"
                              , "You deal 2d6 damage to the item. Apply the item’s Hardness to this damage."
                              , None
                              , "You restore 5 Hit Points to the item, plus an additional 5 per proficiency rank you "
@@ -571,7 +551,6 @@ activityCRAFT = SkillAction("Craft"
                               " remaining portion of its Price in materials. If the downtime days you spend are "
                               "interrupted, you can return to finish the item later, continuing where you left off. "
                             , [traitDOWNTIME, traitMANIPULATE]
-                            , "Downtime"
                             , "You fail to complete the item. You ruin 10% of the raw materials you supplied, but you "
                               "can salvage the rest. If you want to try again, you must start over. "
                             , "You fail to complete the item. You can salvage the raw materials you supplied for their "
@@ -597,7 +576,6 @@ activityIDENTIFYALCHEMY = SkillAction("Identify Alchemy"
                                         "using alchemist’s tools. If your attempt is interrupted in any way, "
                                         "you must start over. "
                                       , [traitCONCENTRATE, traitEXPLORATION, traitMANIPULATE]
-                                      , "Exploration"
                                       , "You misidentify the item as another item of the GM’s choice."
                                       , "You fail to identify the item but can try again."
                                       , "You identify the item and the means of activating it."
@@ -623,7 +601,6 @@ actionCREATEDIVERSION = SkillAction("Create a Diversion"
                                       "gain a +4 circumstance bonus to their Perception DCs against your attempts to "
                                       "Create a Diversion for 1 minute. "
                                     , [traitMENTAL, traitMANIPULATE, traitAUDITORY, traitLINGUISTIC]
-                                    , "Encounter"
                                     , None
                                     , "You don’t divert the attention of any creatures whose Perception DC exceeds "
                                       "your result, and those creatures are aware you were trying to trick them. "
@@ -659,7 +636,6 @@ activityIMPERSONATE = SkillAction("Impersonate"
                                     "based on how well they know the person you’re imitating, or the GM might roll a "
                                     "secret Deception check even if you aren't directly interacting with others. "
                                   , [traitCONCENTRATE, traitEXPLORATION, traitMANIPULATE, traitSECRET]
-                                  , "Exploration"
                                   , "The creature can tell you’re not who you claim to be, and it recognizes you if "
                                     "it would know you without a disguise. "
                                   , "The creature can tell you’re not who you claim to be."
@@ -689,7 +665,6 @@ actionLIE = SkillAction("Lie"
                           "realize it’s a lie. This usually happens if the creature discovers enough evidence to "
                           "counter your statements. "
                         , [traitAUDITORY, traitCONCENTRATE, traitLINGUISTIC, traitMENTAL, traitSECRET]
-                        , "Encounter"
                         , None
                         , "The target doesn't believe your lie and gains a +4 circumstance bonus against your "
                           "attempts to Lie for the duration of your conversation. The target is also more likely to "
@@ -711,7 +686,6 @@ actionFEINT = SkillAction("Feint"
                           , "With a misleading flourish, you leave an opponent unprepared for your real attack. "
                             "Attempt a Deception check against that opponent’s Perception DC. "
                           , [traitMENTAL]
-                          , "Encounter"
                           , "Your feint backfires. You are flat-footed against melee attacks the target attempts "
                             "against you until the end of your next turn. "
                           , None
@@ -737,7 +711,6 @@ activityGATHERINFO = SkillAction("Gather Information"
                                    "any benefit you might be able to gain by spending coin on bribes, drinks, "
                                    "or gifts. "
                                  , [traitEXPLORATION, traitSECRET]
-                                 , "Exploration"
                                  , "You collect incorrect information about the individual or topic."
                                  , None
                                  , "You collect information about the individual or topic. The GM determines the "
@@ -763,7 +736,6 @@ activityMAKEIMPRESSION = SkillAction("Make an Impression"
                                        "bad impressions, on a critical failure) last for only the current social "
                                        "interaction unless the GM decides otherwise. "
                                      , [traitAUDITORY, traitCONCENTRATE, traitEXPLORATION, traitLINGUISTIC, traitMENTAL]
-                                     , "Exploration"
                                      , "The target’s attitude toward you decreases by one step."
                                      , None
                                      , "The target’s attitude toward you improves by one step."
@@ -785,7 +757,6 @@ actionREQUEST = SkillAction("Request"
                               "you. The GM sets the DC based on the difficulty of the request. Some requests are "
                               "unsavory or impossible, and even a helpful NPC would never agree to them. "
                             , [traitAUDITORY, traitCONCENTRATE, traitLINGUISTIC, traitMENTAL]
-                            , "Encounter"
                             , "Not only does the target refuse the request, but their attitude toward you decreases "
                               "by one step due to the temerity of the request. "
                             , "The target refuses the request, though they might propose an alternative that is less "
@@ -813,7 +784,6 @@ activityCOERCE = SkillAction("Coerce"
                                "Changing Attitudes sidebar and described in full in the Conditions page. "
                              , [traitAUDITORY, traitCONCENTRATE, traitEMOTION, traitEXPLORATION, traitLINGUISTIC,
                                 traitMENTAL]
-                             , "Exploration"
                              , "The target refuses to comply, becomes hostile if they weren't already, and can’t be "
                                "Coerced by you for at least 1 week. "
                              , "The target doesn't do what you say, and if they were not already unfriendly or "
@@ -846,7 +816,6 @@ actionDEMORALIZE = SkillAction("Demoralize"
                                  "you take a –4 circumstance penalty to the check. Regardless of your result, "
                                  "the target is temporarily immune to your attempts to Demoralize it for 10 minutes. "
                                , [traitAUDITORY, traitCONCENTRATE, traitEMOTION, traitFEAR, traitMENTAL]
-                               , "Encounter"
                                , None
                                , None
                                , "The target becomes frightened 1."
@@ -874,7 +843,6 @@ actionADMINISTERFIRSTAID = SkillAction("Administer First Aid"
                                          "persistent damage. The DC is usually the DC of the effect that caused the "
                                          "bleed. "
                                        , [traitMANIPULATE]
-                                       , "Encounter"
                                        , "If you were trying to stabilize, the creature’s dying value increases by 1. "
                                          "If you were trying to stop bleeding, it immediately takes an amount of "
                                          "damage equal to its persistent bleed damage. "
@@ -900,7 +868,6 @@ activityTREATDISEASE = SkillAction("Treat Disease"
                                      "creature, you can’t try again until after that creature’s next save against the "
                                      "disease. "
                                    , [traitDOWNTIME, traitMANIPULATE]
-                                   , "Downtime"
                                    , "Your efforts cause the creature to take a –2 circumstance penalty to its next "
                                      "save against the disease. "
                                    , None
@@ -925,7 +892,6 @@ actionTREATPOISON = SkillAction("Treat Poison"
                                   "you can’t try again until after the next time that creature attempts a save "
                                   "against the poison. "
                                 , [traitMANIPULATE]
-                                , "Encounter"
                                 , "Your efforts cause the creature to take a –2 circumstance penalty to its next save "
                                   "against the poison. "
                                 , None
@@ -961,7 +927,6 @@ activityTREATWOUNDS = SkillAction("Treat Wounds"
                                     "of 1 hour, double the Hit Points they regain from Treat Wounds.\nThe result of "
                                     "your Medicine check determines how many Hit Points the target regains. "
                                   , [traitEXPLORATION, traitHEALING, traitMANIPULATE]
-                                  , "Exploration"
                                   , "The target takes 1d8 damage."
                                   , None
                                   , "The target regains 2d8 Hit Points, and its wounded condition is removed."
@@ -992,7 +957,6 @@ actionCOMMANDANIMAL = SkillAction("Command an Animal"
                                     "actions on its next turn; for instance, you could spend 3 actions to Command an "
                                     "Animal to Stride three times or to Stride twice and then Strike. "
                                   , [traitAUDITORY, traitCONCENTRATE]
-                                  , "Encounter"
                                   , "The animal misbehaves or misunderstands, and it takes some other action "
                                     "determined by the GM. "
                                   , "The animal is hesitant or resistant, and it does nothing."
@@ -1017,7 +981,6 @@ actionPERFORM = SkillAction("Perform"
                               "their attitudes—if the GM sees fit. "
                             , [traitAUDITORY, traitCONCENTRATE, traitLINGUISTIC, traitMANIPULATE, traitMOVE,
                                traitVISUAL]
-                            , "Encounter"
                             , "You demonstrate only incompetence."
                             , "Your performance falls flat."
                             , "You prove yourself, and observers appreciate the quality of your performance."
@@ -1042,7 +1005,6 @@ activitySUBSIST = SkillAction("Subsist"
                                 "you can Subsist after 8 hours or less of exploration, but if you do, you take a –5 "
                                 "penalty. "
                               , [traitDOWNTIME]
-                              , "Downtime"
                               , "You attract trouble, eat something you shouldn't, or otherwise worsen your "
                                 "situation. You take a –2 circumstance penalty to checks to Subsist for 1 week. You "
                                 "don’t find any food at all; if you don’t have any stored up, you’re in danger of "
@@ -1087,7 +1049,6 @@ activityCREATEFORGERY = SkillAction("Create Forgery"
                                       "case, the observer can attempt a Perception or Society check against your "
                                       "Society DC (if they succeed, they know your document is a forgery). "
                                     , [traitDOWNTIME, traitSECRET]
-                                    , "Downtime"
                                     , None
                                     , "The observer knows your document is a forgery."
                                     , "The observer does not detect the forgery."
@@ -1116,7 +1077,6 @@ actionCONCEALOBJECT = SkillAction("Conceal an Object"
                                     "case, characters Seeking in an area compare their Perception check results to "
                                     "your Stealth DC to determine whether they find the object. "
                                   , [traitMANIPULATE, traitSECRET]
-                                  , "Encounter"
                                   , None
                                   , "The searcher finds the object."
                                   , "The object remains undetected."
@@ -1139,7 +1099,6 @@ actionHIDE = SkillAction("Hide"
                            "greater cover against or are concealed from. You gain the circumstance bonus from cover "
                            "or greater cover to your check. "
                          , [traitSECRET]
-                         , "Encounter"
                          , None
                          , None
                          , "If the creature could see you, you’re now hidden from it instead of observed. If you were "
@@ -1183,7 +1142,6 @@ actionSNEAK = SkillAction("Sneak"
                             "nor have cover or greater cover against it. You automatically become observed by such a "
                             "creature. "
                           , [traitMOVE, traitSECRET]
-                          , "Encounter"
                           , "You’re spotted! You’re observed by the creature throughout your movement and remain so. "
                             "If you’re invisible and were hidden from the creature, instead of being observed you’re "
                             "hidden throughout your movement and remain so. "
@@ -1221,7 +1179,6 @@ activitySENSEDIRECTION = SkillAction("Sense Direction"
                                        "proficiency rank to Sense Direction. Without a compass, you take a –2 item "
                                        "penalty to checks to Sense Direction. "
                                      , [traitEXPLORATION, traitSECRET]
-                                     , "Exploration"
                                      , None
                                      , None
                                      , "You gain enough orientation to avoid becoming hopelessly lost. If you are in "
@@ -1247,7 +1204,6 @@ activityCOVERTRACKS = SkillAction("Cover Tracks"
                                     "this case, Cover Tracks is a single action and doesn't have the exploration "
                                     "trait. "
                                   , [traitCONCENTRATE, traitEXPLORATION, traitMOVE]
-                                  , "Exploration"
                                   , None
                                   , None
                                   , None
@@ -1274,7 +1230,6 @@ activityTRACK = SkillAction("Track"
                               "significant changes in the trail. The GM determines the DCs for such checks, "
                               "depending on the freshness of the trail, the weather, and the type of ground. "
                             , [traitCONCENTRATE, traitEXPLORATION, traitMOVE]
-                            , "Exploration"
                             , "You lose the trail and can’t try again for 24 hours."
                             , "You lose the trail but can try again after a 1-hour delay."
                             , "You find the trail or continue to follow the one you’re already following."
@@ -1298,7 +1253,6 @@ actionPALMOBJECT = SkillAction("Palm an Object"
                                  "did so. You can typically only Palm Objects of negligible Bulk, though the GM might "
                                  "determine otherwise depending on the situation. "
                                , [traitMANIPULATE]
-                               , "Encounter"
                                , None
                                , "The creature notices you Palming the Object, and the GM determines the creature’s "
                                  "response. "
@@ -1330,7 +1284,6 @@ actionSTEAL = SkillAction("Steal"
                             "wearing the object. The GM may increase the Perception DCs of these observers if they’re "
                             "distracted. "
                           , [traitMANIPULATE]
-                          , "Encounter"
                           , None
                           , "The item’s bearer notices your attempt before you can take the object, or an observer "
                             "sees you take or attempt to take the item. The GM determines the response of any "
@@ -1357,7 +1310,6 @@ actionDISABLEDEVICE = SkillAction("Disable a Device"
                                     "requires a higher proficiency rank in Thievery to disable it.\nYour Thievery "
                                     "check result determines how much progress you make. "
                                   , [traitMANIPULATE]
-                                  , "Encounter"
                                   , "You trigger the device."
                                   , None
                                   , "You disable the device, or you achieve one success toward disabling a complex "
@@ -1386,7 +1338,6 @@ actionPICKLOCK = SkillAction("Pick a Lock"
                                "improvised picks, which are treated as shoddy tools, depending on the specifics of "
                                "the lock. "
                              , [traitMANIPULATE]
-                             , "Encounter"
                              , "You break your tools. Fixing them requires using Crafting to Repair them or else "
                                "swapping in replacement picks (costing 3 sp, or 3 gp for infiltrator thieves’ tools) "
                              , None

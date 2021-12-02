@@ -8,12 +8,11 @@ class Feat:  # DONE Phase 1?
     def __init__(self, *args):
         self.name = args[0]
         self.description = args[1]
-        self.type = args[2]
-        self.level = args[3]  # integer
-        self.prerequisites = args[4]  # list of objects
-        self.traits = args[5]  # list of Traits
-        self.spells = args[6]  # list of Spells
-        self.actions = args[7]  # list of Actions
+        self.level = args[2]  # integer
+        self.prerequisites = args[3]  # list of objects
+        self.traits = args[4]  # list of Traits
+        self.spells = args[5]  # list of Spells
+        self.actions = args[6]  # list of Actions
 
 
 featEXPERIENCEDSMUGGLER = Feat("Experienced Smuggler"
@@ -29,7 +28,6 @@ featEXPERIENCEDSMUGGLER = Feat("Experienced Smuggler"
                                  "using Underworld Lore to Earn Income.\nPFS Note Allows you to always Earn Income "
                                  "with the Underworld Lore with tasks of your level -1 (instead of the normal level "
                                  "-2). "
-                               , "Feat"
                                , 1
                                , [skillSTEALTH]
                                , [traitGENERAL, traitSKILL]
@@ -43,7 +41,6 @@ featNATURALAMBITION = Feat("Natural Ambition"
                              "quickly in your chosen field. You gain a 1st-level class feat for your class. You must "
                              "meet the prerequisites, but you can select the feat later in the character creation "
                              "process in order to determine which prerequisites you meet. "
-                           , "Feat"
                            , 1
                            , []
                            , [traitHUMAN]
@@ -52,7 +49,6 @@ featNATURALAMBITION = Feat("Natural Ambition"
 
 featNIMBLEELF = Feat("Nimble Elf"
                      , "Your muscles are tightly honed. Your Speed increases by 5 feet."
-                     , "Feat"
                      , 1
                      , []
                      , [traitELF]
@@ -62,7 +58,6 @@ featNIMBLEELF = Feat("Nimble Elf"
 featNIMBLEDODGE = Feat("Nimble Dodge"
                        , "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the "
                          "triggering attack. "
-                       , "Feat"
                        , 1
                        , []
                        , [traitROGUE, traitSWASHBUCKLER]
@@ -73,7 +68,6 @@ featARCANESENSE = Feat("Arcane Sense"
                        , "Your study of magic allows you to instinctively sense its presence. You can cast 1st-level "
                          "detect magic at will as an arcane innate spell. If you’re a master in Arcana, the spell is "
                          "heightened to 3rd level; if you’re legendary, it is heightened to 4th level. "
-                       , "Feat"
                        , 1
                        , [skillARCANA]
                        , [traitGENERAL, traitSKILL]
@@ -88,7 +82,6 @@ featMONSTERHUNTER = Feat("Monster Hunter"
                            "weakness in the creature’s defenses. You and allies you tell gain a +1 circumstance bonus "
                            "to your next attack roll against that prey. You can give bonuses from Monster Hunter only "
                            "once per day against a particular creature. "
-                         , "Feat"
                          , 1
                          , []
                          , [traitRANGER]
@@ -101,7 +94,6 @@ featDRAGONSPITE = Feat("Dragon Spit: Electric"
                          "You gain the following cantrip: electric arc "
                          "You can cast this spell as an innate arcane spell at will, and when you "
                          "cast it, the spell’s energy emerges from your mouth. "
-                       , "Feat"
                        , 1
                        , ["Tian-Dan Ethnicity"]
                        , [traitHUMAN]
@@ -112,7 +104,6 @@ featORCFEROCITY = Feat("Orc Ferocity"
                        , "Fierceness in battle runs through your blood, and you refuse to fall from your injuries. "
                          "You avoid being knocked out and remain at 1 Hit Point, and your wounded condition increases "
                          "by 1. "
-                       , "Feat"
                        , 1
                        , []
                        , [traitORC]
@@ -127,7 +118,6 @@ featDOUBLESLICE = Feat("Double Slice"
                          "applicable effects from both weapons. You add any precision damage only once, to the attack "
                          "of your choice. Combine the damage from both Strikes and apply resistances and weaknesses "
                          "only once. This counts as two attacks when calculating your multiple attack penalty. "
-                       , "Feat"
                        , 2
                        , []
                        , [traitFIGHTER, traitATTACK]
@@ -138,7 +128,6 @@ featHUNTEDSHOT = Feat("Hunted Shot"
                       , "You take two quick shots against the one you hunt. Make two Strikes against your prey with "
                         "the required weapon. If both hit the same creature, combine their damage for the purpose of "
                         "resistances and weaknesses. Apply your multiple attack penalty to each Strike normally. "
-                      , "Feat"
                       , 1
                       , []
                       , [traitRANGER, traitFLOURISH]
@@ -153,7 +142,6 @@ featRAGINGINTIMIDATION = Feat("Raging Intimidation"
                                 "respectively) gain the rage trait, allowing you to use them while raging. As soon as "
                                 "you meet the prerequisites for the skill feats Intimidating Glare and Scare to "
                                 "Death, you gain these feats. "
-                              , "Feat"
                               , 1
                               , []
                               , [traitBARBARIAN]
@@ -165,7 +153,6 @@ featCATFALL = Feat("Catfall"
                      "If you’re an expert in Acrobatics, treat falls as 25 feet shorter. If you’re a master in "
                      "Acrobatics, treat them as 50 feet shorter. If you’re legendary in Acrobatics, you always land "
                      "on your feet and don’t take damage, regardless of the distance of the fall. "
-                   , "Feat"
                    , 1
                    , [skillACROBATICS]
                    , [traitGENERAL, traitSKILL]
@@ -177,7 +164,6 @@ featINTIMIDATINGGLARE = Feat("Intimidating Glare"
                              , "You can Demoralize with a mere glare. When you do, Demoralize loses the auditory "
                                "trait and gains the visual trait, and you don’t take a penalty if the creature "
                                "doesn't understand your language. "
-                             , "Feat"
                              , 1
                              , [skillINTIMIDATION]
                              , [traitGENERAL, traitSKILL]
@@ -188,7 +174,6 @@ featINTIMIDATINGGLARE.prerequisites[0].proficiency = Proficiency.Trained
 # p3TODO: featQUICKJUMP
 featQUICKJUMP = Feat(""
                      , ""
-                     , "Feat"
                      , 1
                      , []
                      , []
@@ -197,7 +182,6 @@ featQUICKJUMP = Feat(""
 
 feat = Feat(""
             , ""
-            , "Feat"
             , 1
             , []
             , []

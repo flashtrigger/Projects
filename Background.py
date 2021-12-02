@@ -1,6 +1,7 @@
 from Feat import *
 from Skill import *
 from Trait import *
+from Variables import *
 
 
 class Background:  # DONE?
@@ -15,10 +16,6 @@ class Background:  # DONE?
         self.traits = args[6]  # list of Traits
         self.actions = args[7]  # list of Actions
 
-
-DexInt = ["Dexterity", "Intelligence"]
-Free = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
-StrDex = ["Strength, Dexterity"]
 
 backgroundCRIMINAL = Background("Criminal"
                                 , "As an unscrupulous independent or as a member of an underworld organization, "
