@@ -2,7 +2,8 @@ from Item import Item
 import math
 
 
-class Armor(Item):
+# TODO: Split class Armor
+class ACItem(Item):
 
     def __init__(self, *args):
 
@@ -18,3 +19,6 @@ class Armor(Item):
             self.hardness = args[11]  # integer
             self.HP = args[12]  # integer
             self.BT = int(math.floor(self.HP / 2))  # integer
+
+
+# TODO: pick 2 armors to initialize

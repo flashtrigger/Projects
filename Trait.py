@@ -1,4 +1,4 @@
-class Trait:
+class Trait:  # DONE Phase 1?
 
     def __init__(self, *args):
 
@@ -7,9 +7,7 @@ class Trait:
         self.type = args[2]
 
 
-#  if needed - traitNONE = Trait("None", "None", "None")  # so functions don't freak out for instances with no traits
-
-# TODO: untyped traits
+# P3TODO: untyped traits
 traitARCHETYPE = Trait("Archetype", "This feat belongs to an archetype.", "Untyped")
 traitATTACK = Trait("Attack", "An ability with this trait involves an attack. For each attack you make beyond the "
                               "first on your turn, you take a multiple attack penalty.", "Untyped")
@@ -26,10 +24,26 @@ traitCLASS = Trait("Class", "Archetypes with the class trait fundamentally diver
                             "archetype's dedication feat at 2nd level, and you proceed normally afterward. You can "
                             "never have more than one class archetype.", "Untyped")
 traitCONCENTRATE = Trait("Concentrate", "An action with this trait requires a degree of mental concentration and "
-                                        "discipline.", "untyped")
+                                        "discipline.", "Untyped")
+traitDETECTION = Trait("Detection", "Effects with this trait attempt to determine the presence or location of a "
+                                    "person, object, or aura.", "Untyped")
+traitDOWNTIME = Trait("Downtime", "An activity with this trait takes a day or more, and can be used only during "
+                                  "downtime.", "Untyped")
+traitEMOTION = Trait("Emotion", "This effect alters a creature's emotions. Effects with this trait always have the "
+                                "mental trait as well. Creatures with special training or that have mechanical or "
+                                "artificial intelligence are immune to emotion effects.", "Untyped")
+traitEXPLORATION = Trait("Exploration", "An activity with this trait takes more than a turn to use, and can usually "
+                                        "be used only during exploration mode.", "Untyped")
+traitFEAR = Trait("Fear", "Fear effects evoke the emotion of fear. Effects with this trait always have the mental and "
+                          "emotion traits as well.", "Untyped")
 traitGENERAL = Trait("General", "A type of feat that any character can select, regardless of ancestry and class, "
                                 "as long as they meet the prerequisites. You can select a feat with this trait when "
                                 "your class grants a general feat.", "Untyped")
+traitHEALING = Trait("Healing", "A healing effect restores a creature's body, typically by restoring Hit Points, "
+                                "but sometimes by removing diseases or other debilitating effects.", "Untyped")
+traitLINGUISTIC = Trait("Linguistic", "An effect with this trait depends on language comprehension. A linguistic "
+                                      "effect that targets a creature works only if the target understands the "
+                                      "language you are using.", "Untyped")
 traitMANIPULATE = Trait("Manipulate", "You must physically manipulate an item or make gestures to use an action with "
                                       "this trait. Creatures without a suitable appendage can’t perform actions with "
                                       "this trait. Manipulate actions often trigger reactions.", "Untyped")
@@ -39,6 +53,8 @@ traitMAGICAL = Trait("Magical", "Something with the magical trait is imbued with
                                 "tradition of magic. In these cases, the item has the arcane, divine, occult, "
                                 "or primal trait instead of the magical trait. Any of these traits indicate that the "
                                 "item is magical.", "Untyped")
+traitMENTAL = Trait("Mental", "A mental effect can alter the target's mind. It has no effect on an object or a "
+                              "mindless creature.", "Untyped")
 traitMOVE = Trait("Move", "An action with this trait involves moving from one space to another.", "Untyped")
 traitPRESS = Trait("Press", "Actions with this trait allow you to follow up earlier attacks. An action with the press "
                             "trait can be used only if you are currently affected by a multiple attack penalty. Some "
@@ -52,23 +68,28 @@ traitMULTICLASS = Trait("Multiclass", "Archetypes with the multiclass trait repr
                                       "another class’s specialties. You can’t select a multiclass archetype’s "
                                       "dedication feat if you are a member of the class of the same name.", "Untyped")
 traitSECRET = Trait("Secret", "The GM rolls the check for this ability in secret.", "Untyped")
+traitSKILL = Trait("Skill", "A general feat with the skill trait improves your skills and their actions or gives you "
+                            "new actions for a skill. A feat with this trait can be selected when a class grants a "
+                            "skill feat or general feat. Archetype feats with the skill trait can be selected in "
+                            "place of a skill feat if you have that archetype's dedication feat.", "Untyped")
 traitFLOURISH = Trait("Flourish", "Flourish actions are actions that require too much exertion to perform a large "
                                   "number in a row. You can use only 1 action with the flourish trait per turn.",
                       "Untyped")
 
-# TODO: add rest of classes
+# p3TODO: add rest of classes
 traitRANGER = Trait("Ranger", "This indicates abilities from the ranger class.", "Class")
 traitROGUE = Trait("Rogue", "This indicates abilities from the rogue class.", "Class")
 traitFIGHTER = Trait("Fighter", "This indicates abilities from the fighter class.", "Class")
 traitBARBARIAN = Trait("Barbarian", "This indicates abilities from the barbarian class.", "Class")
+traitSWASHBUCKLER = Trait("Swashbuckler", "This trait indicates abilities from the swashbuckler class.", "Class")
 
-# TODO: class-ability traits
+# p3TODO: class-ability traits
 traitINSTINCT = Trait("Instinct", "Instinct abilities require a specific instinct; you lose access if you perform "
                                   "acts anathema to your instinct.", "Class Ability")
 traitRAGE = Trait("Rage", "You must be raging to use abilities with the rage trait, and they end automatically when "
                           "you stop raging.", "Class Ability")
 
-# TODO: add rest of Ancestries
+# p3TODO: add rest of Ancestries
 traitORC = Trait("Orc", "A creature with this trait is a member of the orc ancestry. These green-skinned people tend "
                         "to have darkvision. An ability with this trait can be used or selected only by orcs. An item "
                         "with this trait is created and used by orcs.", "Ancestry")
@@ -114,15 +135,15 @@ traitLAWFUL = Trait("Lawful", "Lawful effects often manipulate energy from law-a
                               "antithetical to chaotic divine servants or divine servants of chaotic deities. A "
                               "creature with this trait is lawful in alignment.", "Alignment")
 
-# TODO: creature type traits
+# p3TODO: creature type traits
 traitHUMANOID = Trait("Humanoid", "Humanoid creatures reason and act much like humans. They typically stand upright "
                                   "and have two arms and two legs.", "Creature Type")
 
-# TODO: energy traits
+# p3TODO: energy traits
 traitELECTRICITY = Trait("Electricity", "Effects with this trait deal electricity damage. A creature with this trait "
                                         "has a magical connection to electricity.", "Energy")
 
-# TODO: equipment traits
+# p3TODO: equipment traits
 traitCONSUMABLE = Trait("Consumable", "An item with this trait can be used only once. Unless stated otherwise, "
                                       "it's destroyed after activation. Consumable items include alchemical items and "
                                       "magical consumables such as scrolls and talismans. When a character creates "
@@ -164,7 +185,9 @@ traitOLFACTORY = Trait("Olfactory", "An olfactory effect can affect only creatur
 traitVISUAL = Trait("Visual", "A visual effect can affect only creatures that can see it. This applies only to "
                               "visible parts of the effect, as determined by the GM.", "Senses")
 
-# TODO: school traits
+# p3TODO: school traits
+traitDIVINATION = Trait("Divination", "The divination school of magic typically involves obtaining or transferring "
+                                      "information, or predicting events.", "School")
 traitEVOCATION = Trait("Evocation", "Effects and magic items with this trait are associated with the evocation school "
                                     "of magic, typically involving energy and elemental forces.", "School")
 
@@ -178,7 +201,7 @@ traitOCCULT = Trait("Occult", "This magic comes from the occult tradition, calli
 traitPRIMAL = Trait("Primal", "This magic comes from the primal tradition, connecting to the natural world and "
                               "instinct. Anything with this trait is magical.", "Tradition")
 
-# TODO: weapon traits
+# p3TODO: weapon traits
 traitAGILE = Trait("Agile", "The multiple attack penalty you take with this weapon on the second attack on your turn "
                             "is –4 instead of –5, and –8 instead of –10 on the third and subsequent attacks in the "
                             "turn.", "Weapon")

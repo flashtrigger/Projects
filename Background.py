@@ -1,10 +1,9 @@
-from Action import *
 from Feat import *
 from Skill import *
 from Trait import *
 
 
-class Background:
+class Background:  # DONE?
 
     def __init__(self, *args):
         self.name = args[0]
@@ -19,25 +18,28 @@ class Background:
 
 DexInt = ["Dexterity", "Intelligence"]
 Free = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+StrDex = ["Strength, Dexterity"]
 
-# TODO: initialize default skill objects
-# TODO: initialize default feat objects
 backgroundCRIMINAL = Background("Criminal"
                                 , "As an unscrupulous independent or as a member of an underworld organization, "
                                   "you lived a life of crime. You might have become an adventurer to seek redemption, "
                                   "to escape the law, or simply to get access to bigger and better loot. "
                                 , [DexInt, Free]
-                                , []
+                                , [skillSTEALTH]
                                 , "Underworld"
-                                , []
+                                , [featEXPERIENCEDSMUGGLER]
                                 , [traitCOMMON]
                                 , [])
+backgroundCRIMINAL.skills[0].proficiency = Proficiency.Trained
 
-background = Background(""
-                        , ""
-                        , []
-                        , []
-                        , ""
-                        , []
-                        , []
-                        , [])
+backgroundMARTIALADEPT = Background("Martial Adept"
+                                    , "You dedicated yourself to intense training and rigorous study to become a "
+                                      "great warrior. The school you attended might have been a traditionalist "
+                                      "monastery, an elite military academy, or the local branch of a prestigious "
+                                      "mercenary organization. "
+                                    , [StrDex, Free]
+                                    , [[skillACROBATICS, skillATHLETICS]]
+                                    , "Warfare"
+                                    , [[featCATFALL, featQUICKJUMP]]
+                                    , [traitCOMMON]
+                                    , [])

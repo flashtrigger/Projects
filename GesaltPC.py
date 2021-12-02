@@ -1,4 +1,4 @@
-class GesaltPC:
+class GesaltPC:  # DONE Phase 1?
     def __init__(self):
 
         self.name, self.alignment = "", ""
@@ -10,9 +10,10 @@ class GesaltPC:
         self.STRmod, self.DEXmod, self.CONmod, self.INTmod, self.WISmod, self.CHAmod = 0, 0, 0, 0, 0, 0
         self.fort, self.ref, self.will, self.classDCBonus, self.spellBonus = 0, 0, 0, 0, 0
         self.actionList, self.feats, self.skills, self.equipment, self.worn = [], [], [], [], []
-        self.activityList = []
+        self.activityList, self.statusEffects = [], []
         self.AC, self.meleeATK, self.rangeATK, self.spellATK, self.initiative = 0, 0, 0, 0, 0
 
 
-# TODO: addItems method
-# TODO: addTraits method
+
+# P2TODO: addItems method
+# P2TODO: addTraits method

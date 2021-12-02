@@ -1,8 +1,10 @@
-class Proficiency:
+from enum import Enum
 
-    def __init__(self, *args):
 
-        self.name = args[0]
-        self.stat = args[1]
-        self.proficiency = args[2]
-        self.bonus = args[3]
+class Proficiency(Enum):  # DONE Phase 1!
+
+    Untrained = 0
+    Trained = 2
+    Expert = 4
+    Master = 6
+    Legendary = 8

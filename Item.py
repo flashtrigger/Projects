@@ -1,4 +1,4 @@
-class Item:
+class Item:  # DONE Phase 1!
 
     def __init__(self, *args):
         self.name = args[0]

@@ -7,3 +7,6 @@ class ClassAbility:
         self.traits = args[2]  # list of Traits
         self.level = args[3]  # integer
         self.actions = args[4]  # list of Actions
+
+
+# TODO ClassAbility s
