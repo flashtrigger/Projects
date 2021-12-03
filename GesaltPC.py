@@ -1,4 +1,8 @@
-class GesaltPC:  # DONE Phase 1?
+from Entity import Entity
+
+
+class GesaltPC(Entity): # DONE Phase 1?
+
     def __init__(self):
 
         self.name, self.alignment = "", ""

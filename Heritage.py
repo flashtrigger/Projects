@@ -1,12 +1,12 @@
+from Entity import Entity
 from Trait import *
 
 
-class Heritage:  # DONE Phase 1!
+class Heritage(Entity):  # DONE Phase 1!
 
     def __init__(self, *args):
 
-        self.name = args[0]
-        self.description = args[1]
+        Entity.__init__(self, *args)
         self.ancestry = args[2]  # 'Versatile'
         self.traits = args[3]  # List of Traits
         self.actions = args[4]  # list of actions

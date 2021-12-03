@@ -1,11 +1,12 @@
+from Entity import Entity
+from Variables import *
 from Trait import *  # DONE Phase 1!
 
 
-class Ancestry:
+class Ancestry(Entity):
 
     def __init__(self, *args):
-        self.name = args[0]
-        self.description = args[1]
+        Entity.__init__(self, *args)
         self.traits = args[2]  # list of Traits
         self.HP = args[3]  # integer
         self.size = args[4]
@@ -17,9 +18,6 @@ class Ancestry:
         self.other = args[10]  # list of strings
         self.heritage = args[11]  # list of Heritages
 
-
-DexInt = ["Dexterity", "Intelligence"]
-Free = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 
 ancestryHUMAN = Ancestry("Human"
                          , "Human"

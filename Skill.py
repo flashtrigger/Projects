@@ -2,105 +2,108 @@ from SkillAction import *
 from Variables import Proficiency
 
 
-class Skill:
+class Skill(Entity):
 
     def __init__(self, *args):
-        self.name = args[0]
+
+        Entity.__init__(self, *args)
         self.stat = args[1]
-        self.description = args[2]
         self.proficiency = Proficiency.Untrained
         self.bonus = 0
         self.actions = args[3]  # list of actions
 
 
-skillACROBATICS = Skill("Acrobatics", "Dexterity"
+skillACROBATICS = Skill("Acrobatics"
                         , "Acrobatics measures your ability to perform tasks requiring coordination and grace. When "
                           "you use the Escape basic action, you can use your Acrobatics modifier instead of your "
-                          "unarmed attack modifier."
+                          "unarmed attack modifier.", "Dexterity"
                         , [actionBALANCE, actionTUMBLETHROUGH, actionMANEUVERINFLIGHT, activitySQUEEZE])
 
-skillARCANA = Skill("Arcana", "Intelligence"
+skillARCANA = Skill("Arcana"
                     , "Arcana measures how much you know about arcane magic and creatures. Even if you’re untrained, "
-                      "you can Recall Knowledge. "
+                      "you can Recall Knowledge. ", "Intelligence"
                     , [actionRECALLKNOWLEDGE, activityDECIPHERWRITING, activityIDENTIFYMAGIC, activityLEARNASPELL,
                        activityBORROWARCANE])
 
-skillATHLETICS = Skill("Athletics", "Strength"
+skillATHLETICS = Skill("Athletics"
                        , "Athletics allows you to perform deeds of physical prowess. When you use the Escape basic "
                          "action, you can use your Athletics modifier instead of your unarmed attack modifier. "
+                       , "Strength"
                        , [actionCLIMB, actionFORCEOPEN, actionGRAPPLE, actionHIGHJUMP, actionLONGJUMP, actionSHOVE,
                           actionSWIM, actionTRIP, actionDISARM])
 
-skillCRAFTING = Skill("Crafting", "Intelligence"
+skillCRAFTING = Skill("Crafting"
                       , "You can use this skill to create, understand, and repair items. Even if you're untrained, "
-                        "you can Recall Knowledge. "
+                        "you can Recall Knowledge. ", "Intelligence"
                       , [activityEARNINCOME, activityREPAIR, activityCRAFT, activityIDENTIFYALCHEMY])
 
-skillDECEPTION = Skill("Deception", "Charisma"
+skillDECEPTION = Skill("Deception"
                        , "You can trick and mislead others using disguises, lies, and other forms of subterfuge."
+                       , "Charisma"
                        , [actionCREATEDIVERSION, activityIMPERSONATE, actionLIE, actionFEINT])
 
-skillDIPLOMACY = Skill("Diplomacy", "Charisma"
-                       , "You influence others through negotiation and flattery."
+skillDIPLOMACY = Skill("Diplomacy"
+                       , "You influence others through negotiation and flattery.", "Charisma"
                        , [activityGATHERINFO, activityMAKEIMPRESSION, actionREQUEST])
 
-skillINTIMIDATION = Skill("Intimidation", "Charisma"
-                          , "You bend others to your will using threats."
+skillINTIMIDATION = Skill("Intimidation"
+                          , "You bend others to your will using threats.", "Charisma"
                           , [activityCOERCE, actionDEMORALIZE])
 
-skillLORE = Skill("Lore", "Intelligence"
+skillLORE = Skill("Lore"
                   , "You have specialized information on a narrow topic. Lore features many subcategories"
+                  , "Intelligence"
                   , [actionRECALLKNOWLEDGE, activityEARNINCOME])
 
-skillMEDICINE = Skill("Medicine", "Wisdom"
+skillMEDICINE = Skill("Medicine"
                       , "You can patch up wounds and help people recover from diseases and poisons. Even if you’re "
-                        "untrained in Medicine, you can use it to Recall Knowledge. "
+                        "untrained in Medicine, you can use it to Recall Knowledge. ", "Wisdom"
                       , [actionRECALLKNOWLEDGE, actionADMINISTERFIRSTAID, activityTREATDISEASE, actionTREATPOISON,
                          activityTREATWOUNDS])
 
-skillNATURE = Skill("Nature", "Wisdom"
+skillNATURE = Skill("Nature"
                     , "You know a great deal about the natural world, and you command and train animals and magical "
-                      "beasts. Even if you’re untrained in Nature, you can use it to Recall Knowledge. "
+                      "beasts. Even if you’re untrained in Nature, you can use it to Recall Knowledge. ", "Wisdom"
                     , [actionRECALLKNOWLEDGE, activityIDENTIFYMAGIC, activityLEARNASPELL, actionCOMMANDANIMAL])
 
-skillOCCULTISM = Skill("Occultism", "Intelligence"
+skillOCCULTISM = Skill("Occultism"
                        , "You know a great deal about ancient philosophies, esoteric lore, obscure mysticism, "
                          "and supernatural creatures. Even if you’re untrained in Occultism, you can use it to Recall "
-                         "Knowledge. "
+                         "Knowledge. ", "Intelligence"
                        , [actionRECALLKNOWLEDGE, activityDECIPHERWRITING, activityIDENTIFYMAGIC, activityLEARNASPELL])
 
-skillPERFORMANCE = Skill("Performance", "Charisma"
+skillPERFORMANCE = Skill("Performance"
                          , "You are skilled at a form of performance, using your talents to impress a crowd or make a "
-                           "living. "
+                           "living. ", "Charisma"
                          , [activityEARNINCOME, actionPERFORM])
 
-skillRELIGION = Skill("Religion", "Wisdom"
+skillRELIGION = Skill("Religion"
                       , "The secrets of deities, dogma, faith, and the realms of divine creatures both sublime and "
                         "sinister are open to you. You also understand how magic works, though your training imparts "
                         "a religious slant to that knowledge. Even if you’re untrained in Religion, you can use it to "
-                        "Recall Knowledge. "
+                        "Recall Knowledge. ", "Wisdom"
                       , [actionRECALLKNOWLEDGE, activityDECIPHERWRITING, activityIDENTIFYMAGIC, activityLEARNASPELL])
 
-skillSOCIETY = Skill("Society", "Intelligence"
+skillSOCIETY = Skill("Society"
                      , "You understand the people and systems that make civilization run, and you know the historical "
                        "events that make societies what they are today. Further, you can use that knowledge to "
                        "navigate the complex physical, societal, and economic workings of settlements. Even if you’re "
-                       "untrained in Society, you can use it for the following general skill actions. "
+                       "untrained in Society, you can use it for the following general skill actions. ", "Intelligence"
                      , [actionRECALLKNOWLEDGE, activitySUBSIST, activityDECIPHERWRITING, activityCREATEFORGERY])
 
-skillSTEALTH = Skill("Stealth", "Dexterity"
+skillSTEALTH = Skill("Stealth"
                      , "You are skilled at avoiding detection, allowing you to slip past foes, hide, or conceal an "
-                       "item. "
+                       "item. ", "Dexterity"
                      , [actionCONCEALOBJECT, actionHIDE, actionSNEAK])
 
-skillSURVIVAL = Skill("Survival", "Wisdom"
+skillSURVIVAL = Skill("Survival"
                       , "You are adept at living in the wilderness, foraging for food and building shelter, and with "
                         "training you discover the secrets of tracking and hiding your trail. Even if you’re "
-                        "untrained, you can still use Survival to Subsist. "
+                        "untrained, you can still use Survival to Subsist. ", "Wisdom"
                       , [activitySUBSIST, activitySENSEDIRECTION, activityCOVERTRACKS, activityTRACK])
 
-skillTHIEVERY = Skill("Thievery", "Dexterity"
-                      , "You are trained in a particular set of skills favored by thieves and miscreants"
+skillTHIEVERY = Skill("Thievery"
+                      , "You are trained in a particular set of skills favored by thieves and miscreants", "Dexterity"
                       , [actionPALMOBJECT, actionSTEAL, actionDISABLEDEVICE, actionPICKLOCK])
 
 skillPACKAGE = [skillACROBATICS, skillARCANA, skillATHLETICS, skillCRAFTING, skillDECEPTION, skillDIPLOMACY,

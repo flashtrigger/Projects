@@ -3,11 +3,11 @@ from Action import *
 from Spell import *
 
 
-class Feat:  # DONE Phase 1?
+class Feat(Entity):  # DONE Phase 1?
 
     def __init__(self, *args):
-        self.name = args[0]
-        self.description = args[1]
+
+        Entity.__init__(self, *args)
         self.level = args[2]  # integer
         self.prerequisites = args[3]  # list of objects
         self.traits = args[4]  # list of Traits

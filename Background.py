@@ -4,11 +4,10 @@ from Trait import *
 from Variables import *
 
 
-class Background:  # DONE?
+class Background(Entity):  # DONE?
 
     def __init__(self, *args):
-        self.name = args[0]
-        self.description = args[1]
+        Entity.__init__(self, *args)
         self.abilityBoosts = args[2]  # list of choices
         self.skills = args[3]  # list of skills
         self.lore = args[4]

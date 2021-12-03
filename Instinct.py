@@ -1,9 +1,11 @@
-class Instinct:
+from Entity import Entity
+
+
+class Instinct(Entity):
 
     def __init__(self, *args):
 
-        self.name = args[0]
-        self.description = args[1]
+        Entity.__init__(self, *args)
         self.anathema = args[2]
         self.ability = args[3]
         self.specialization = args[4]

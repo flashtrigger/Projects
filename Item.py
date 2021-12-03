@@ -1,14 +1,18 @@
-class Item:  # DONE Phase 1!
+from Entity import Entity
+
+
+class Item(Entity):  # DONE Phase 1!
 
     def __init__(self, *args):
-        self.name = args[0]
-        self.category = args[1]
-        self.subcategory = args[2]
-        self.bulk = args[3]   # float
-        self.value = args[4]  # float
-        self.level = args[5]  # integer
-        self.traits = args[6]  # list of Traits
-        self.actions = args[7]  # list of Actions
+
+        Entity.__init__(self, *args)
+        self.category = args[2]
+        self.subcategory = args[3]
+        self.bulk = args[4]   # float
+        self.value = args[5]  # float
+        self.level = args[6]  # integer
+        self.traits = args[7]  # list of Traits
+        self.actions = args[8]  # list of Actions
 
 
 # p3TODO: initialize PHB items

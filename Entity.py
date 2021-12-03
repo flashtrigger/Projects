@@ -1,4 +1,4 @@
-class Entity:  # TODO update all classes to be Entity subclasses
+class Entity:
 
     def __init__(self, *args):
 

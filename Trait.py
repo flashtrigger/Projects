@@ -1,9 +1,11 @@
-class Trait:  # DONE Phase 1?
+from Entity import Entity
+
+
+class Trait(Entity):  # DONE Phase 1?
 
     def __init__(self, *args):
 
-        self.name = args[0]
-        self.description = args[1]
+        Entity.__init__(self, *args)
         self.type = args[2]
 
 

@@ -1,13 +1,12 @@
 from Trait import *
 
 
-class Spell:  # DONE Phase 1!
+class Spell(Entity):  # DONE Phase 1!
 
     def __init__(self, *args):
 
-        self.name = args[0]
-        self.numActions = args[1]  # integer, -1 = reaction, 0 = free
-        self.description = args[2]
+        Entity.__init__(self, *args)
+        self.numActions = args[2]  # integer, -1 = reaction, 0 = free
         self.traits = args[3]  # list of Traits
         self.level = args[4]  # integer
         self.components = args[5]
@@ -30,30 +29,30 @@ class Spell:  # DONE Phase 1!
             self.uses = args[17]
 
 
-spellELECTRICARC = Spell("Electric Arc", 2,
+spellELECTRICARC = Spell("Electric Arc",
                          "An arc of lightning leaps from one target to another. You deal electricity damage equal to "
-                         "1d4 plus your spellcasting ability modifier.",
+                         "1d4 plus your spellcasting ability modifier.", 2,
                          [traitCOMMON, traitCANTRIP, traitELECTRICITY, traitEVOCATION, traitARCANE, traitPRIMAL,
                           traitMANIPULATE, traitMAGICAL, traitCONCENTRATE],
                          1, "Somatic, Verbal", None, None, "1d4+stat", "Electricity", "Basic Reflex",
                          "1 or 2 Creatures", "30 ft", None, False, False, True, "(+1) 1d4")
 
 # Dragon Spit: Electric
-spellELECTRICARC_DS = Spell("Electric Arc", 2,
+spellELECTRICARC_DS = Spell("Electric Arc",
                             "An arc of lightning leaps from one target to another. You deal electricity damage "
-                            "equal to 1d4 plus your spellcasting ability modifier.",
+                            "equal to 1d4 plus your spellcasting ability modifier.", 2,
                             [traitCOMMON, traitCANTRIP, traitELECTRICITY, traitEVOCATION, traitARCANE, traitPRIMAL,
                              traitMANIPULATE, traitMAGICAL, traitCONCENTRATE],
                             1, "Somatic, Verbal", None, None, "1d4+stat", "Electricity", "Basic Reflex",
                             "1 or 2 Creatures", "30 ft", None, False, True, True, "(+1) 1d4", "At-Will")
 
-spellDETECTMAGIC = Spell("Detect Magic", 2
+spellDETECTMAGIC = Spell("Detect Magic"
                          , "You send out a pulse that registers the presence of magic. You receive no information "
                            "beyond the presence or absence of magic. You can choose to ignore magic you're fully "
                            "aware of, such as the magic items and ongoing spells of you and your allies.\nYou detect "
                            "illusion magic only if that magic's effect has a lower level than the level of your "
                            "detect magic spell. However, items that have an illusion aura but aren't deceptive in "
-                           "appearance (such as an invisibility potion) typically are detected normally."
+                           "appearance (such as an invisibility potion) typically are detected normally.", 2
                          , [traitCOMMON, traitCANTRIP, traitDETECTION, traitDIVINATION, traitMAGICAL, traitMANIPULATE,
                             traitCONCENTRATE, traitARCANE, traitDIVINE, traitOCCULT, traitPRIMAL]
                          , 1, "Somatic, Verbal", None, None, None, None, None, None, None, "Self", "30 ft"
@@ -66,13 +65,13 @@ spellDETECTMAGIC = Spell("Detect Magic", 2
                            "that).")
 
 # Arcane Sense
-spellDETECTMAGIC_AS = Spell("Detect Magic", 2
+spellDETECTMAGIC_AS = Spell("Detect Magic"
                             , "You send out a pulse that registers the presence of magic. You receive no information "
                               "beyond the presence or absence of magic. You can choose to ignore magic you're fully "
                               "aware of, such as the magic items and ongoing spells of you and your allies.\nYou detect"
                               " illusion magic only if that magic's effect has a lower level than the level of your "
                               "detect magic spell. However, items that have an illusion aura but aren't deceptive in "
-                              "appearance (such as an invisibility potion) typically are detected normally."
+                              "appearance (such as an invisibility potion) typically are detected normally.", 2
                             , [traitCOMMON, traitCANTRIP, traitDETECTION, traitDIVINATION, traitMAGICAL,
                                traitMANIPULATE, traitCONCENTRATE, traitARCANE, traitDIVINE, traitOCCULT, traitPRIMAL]
                             , 1, "Somatic, Verbal", None, None, None, None, None, None, None, "Self", "30 ft"

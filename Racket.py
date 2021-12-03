@@ -1,9 +1,8 @@
-class Racket:
+class Racket(Entity):
 
     def __init__(self, *args):
 
-        self.name = args[0]
-        self.description = args[1]
+        Entity.__init__(self, *args)
         self.skills = args[2]  # list of Skills
         self.statChoices = args[3]  # from Variables
         self.actions = args[4]  # list of Actions

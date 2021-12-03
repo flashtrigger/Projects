@@ -1,9 +1,11 @@
-class Currency:  # DONE Phase 1!
+from Entity import Entity
+
+
+class Currency(Entity):  # DONE Phase 1!
 
     def __init__(self, *args):
 
-        self.name = args[1]
-        self.description = args[2]
+        Entity.__init__(self, *args)
         self.value = args[3]  # float (in gold pieces)
         self.bulk = args[4]  # float
 
