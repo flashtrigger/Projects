@@ -275,11 +275,9 @@ traitUNARMED = Trait("Unarmed", "An unarmed attack uses your body rather than a 
                                 "and it might have weapon traits. Since it's part of your body, an unarmed attack "
                                 "can't be Disarmed. It also doesn't take up a hand, though a fist or other grasping "
                                 "appendage generally works like a free-hand weapon.", "Weapon")
-traitVERSATILE = Trait("Versatile", "A versatile weapon can be used to deal a different type of damage than that "
-                                    "listed in the Damage entry. This trait indicates the alternate damage type. For "
-                                    "instance, a piercing weapon that is versatile S can be used to deal piercing or "
-                                    "slashing damage. You choose the damage type each time you make an attack.",
-                       "Weapon")
+traitVERSATILE_S = Trait("Versatile", "A versatile weapon can be used to deal a different type of damage than that "
+                                      "listed in the Damage entry. This trait indicates slash damage can be dealt."
+                                      "You choose the damage type each time you make an attack.", "Weapon")
 traitVOLLEY = Trait("Volley", "This ranged weapon is less effective at close distances. Your attacks against targets "
                               "that are at a distance within the range listed take a –2 penalty.", "Weapon")
 

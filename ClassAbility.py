@@ -11,4 +11,4 @@ class ClassAbility(Entity):
         self.actions = args[4]  # list of Actions
 
 
-# TODO ClassAbility s
+# TODO level 1 rogue/ranger/fighter/barbarian class abilities

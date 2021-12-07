@@ -253,10 +253,10 @@ actionSTRIDE = Action("Stride"
 
 actionSTRIKE = Action("Strike"
                       , "You attack with a weapon you're wielding or with an unarmed attack, targeting one creature "
-                      "within your reach (for a melee attack) or within range (for a ranged attack). Roll the attack "
-                      "roll for the weapon or unarmed attack you are using, and compare the result to the target "
-                      "creature's AC to determine the effect. See Attack Rolls and Damage for details on calculating "
-                      "your attack and damage rolls. "
+                        "within your reach (for a melee attack) or within range (for a ranged attack). Roll the attack "
+                        "roll for the weapon or unarmed attack you are using, and compare the result to the target "
+                        "creature's AC to determine the effect. See Attack Rolls and Damage for details on calculating "
+                        "your attack and damage rolls. "
                       , 1
                       , [traitATTACK]
                       , None
@@ -464,6 +464,20 @@ actionORCFEROCITY = Action("Orc Ferocity"
                            , None
                            , "You would be reduced to 0 Hit Points but not immediately killed.")
 actionORCFEROCITY.frequency = "Once per day"
+
+actionREACTIVESHIELD = Action("Reactive Shield"
+                              , "You can snap your shield into place just as you would take a blow, avoiding the hit "
+                                "at the last second. You immediately use the Raise a Shield action and gain your "
+                                "shield’s bonus to AC. The circumstance bonus from the shield applies to your AC when "
+                                "you’re determining the outcome of the triggering attack. "
+                              , -1
+                              , [traitFIGHTER]
+                              , None
+                              , None
+                              , None
+                              , None
+                              , "You are wielding a shield."
+                              , "An enemy hits you with a melee Strike.")
 
 action = Action(""
                 , ""
