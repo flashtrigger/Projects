@@ -1,5 +1,4 @@
-from Entity import Entity
-from Trait import *
+from Trait import *  # p2TODO: remove unnecessary imports all around
 
 
 # 306 - Specialty Basic ; 389 - Class ; 411 - Feat
@@ -362,7 +361,56 @@ actionPOINTOUT = Action("Point Out"
                         , "A creature is undetected by one or more of your allies but isn’t undetected by you."
                         , None)
 
+actionRAISESHIELD = Action("Raise a Shield"
+                           , "You position your shield to protect yourself. When you have Raised a Shield, you gain "
+                             "its listed circumstance bonus to AC. Your shield remains raised until the start of your "
+                             "next turn. "
+                           , 1
+                           , []
+                           , None
+                           , None
+                           , None
+                           , None
+                           , "You are wielding a shield."
+                           , None)
+
 # class actions
+# Barbarian
+actionRAGE = Action("Rage"
+                    , "You tap into your inner fury and begin raging. You gain a number of temporary Hit Points equal "
+                      "to your level plus your Constitution modifier. This frenzy lasts for 1 minute, until there are "
+                      "no enemies you can perceive, or until you fall unconscious, whichever comes first. You can't "
+                      "voluntarily stop raging. While you are raging:\nYou deal 2 additional damage with melee "
+                      "Strikes. This additional damage is halved if your weapon or unarmed attack is agile.\nYou take "
+                      "a –1 penalty to AC.\nYou can't use actions with the concentrate trait unless they also have "
+                      "the rage trait. You can Seek while raging.\nAfter you stop raging, you lose any remaining "
+                      "temporary Hit Points from Rage, and you can't Rage again for 1 minute. "
+                    , 1
+                    , [traitBARBARIAN, traitCONCENTRATE, traitEMOTION, traitMENTAL]
+                    , None
+                    , None
+                    , None
+                    , None
+                    , "You aren’t fatigued or raging."
+                    , None)
+
+# Fighter
+actionATTACKOPPORTUNITY = Action("Attack of Opportunity"
+                                 , "You lash out at a foe that leaves an opening. Make a melee Strike against the "
+                                   "triggering creature. If your attack is a critical hit and the trigger was a "
+                                   "manipulate action, you disrupt that action. This Strike doesn't count toward your "
+                                   "multiple attack penalty, and your multiple attack penalty doesn't apply to this "
+                                   "Strike."
+                                 , -1
+                                 , []
+                                 , None
+                                 , None
+                                 , None
+                                 , None
+                                 , None
+                                 , "A creature within your reach uses a manipulate action or a move action, makes a "
+                                   "ranged attack, or leaves a square during a move action it’s using.")
+
 # Ranger
 actionHUNTPREY = Action("Hunt Prey"
                         , "You designate a single creature as your prey and focus your attacks against that creature. "
@@ -465,6 +513,7 @@ actionORCFEROCITY = Action("Orc Ferocity"
                            , "You would be reduced to 0 Hit Points but not immediately killed.")
 actionORCFEROCITY.frequency = "Once per day"
 
+# Reactive Shield
 actionREACTIVESHIELD = Action("Reactive Shield"
                               , "You can snap your shield into place just as you would take a blow, avoiding the hit "
                                 "at the last second. You immediately use the Raise a Shield action and gain your "
@@ -478,6 +527,20 @@ actionREACTIVESHIELD = Action("Reactive Shield"
                               , None
                               , "You are wielding a shield."
                               , "An enemy hits you with a melee Strike.")
+
+# Shield Block
+actionSHIELDBLOCK = Action("Shield Block"
+                           , "You snap your shield in place to ward off a blow. Your shield prevents you from taking "
+                             "an amount of damage up to the shield’s Hardness. You and the shield each take any "
+                             "remaining damage, possibly breaking or destroying the shield. "
+                           , -1
+                           , [traitGENERAL]
+                           , None
+                           , None
+                           , None
+                           , None
+                           , None
+                           , "While you have your shield raised, you would take damage from a physical attack.")
 
 action = Action(""
                 , ""

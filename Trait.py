@@ -4,7 +4,6 @@ from Entity import Entity
 class Trait(Entity):  # DONE Phase 1?
 
     def __init__(self, *args):
-
         Entity.__init__(self, *args)
         self.type = args[2]
 
@@ -102,6 +101,10 @@ traitELF = Trait("Elf", "A creature with this trait is a member of the elf ances
 traitHUMAN = Trait("Human", "A creature with this trait is a member of the human ancestry. Humans are a diverse array "
                             "of people known for their adaptability. An ability with this trait can be used or "
                             "selected only by humans.", "Ancestry")
+traitGNOME = Trait("Gnome", "A creature with this trait is a member of the gnome ancestry. Gnomes are small people "
+                            "skilled at magic who seek out new experiences and usually have low-light vision. An "
+                            "ability with this trait can be used or selected only by gnomes. A weapon with this trait "
+                            "is created and used by gnomes.", "Ancestry")
 traitAASIMAR = Trait("Aasimar", "A creature with this trait has the aasimar versatile heritage. Aasimars are planar "
                                 "scions descended from celestial beings. An ability with this trait can be used or "
                                 "selected only by aasimars.", "Ancestry")
@@ -207,12 +210,12 @@ traitPRIMAL = Trait("Primal", "This magic comes from the primal tradition, conne
 traitAGILE = Trait("Agile", "The multiple attack penalty you take with this weapon on the second attack on your turn "
                             "is –4 instead of –5, and –8 instead of –10 on the third and subsequent attacks in the "
                             "turn.", "Weapon")
-traitDEADLY = Trait("Deadly", "On a critical hit, the weapon adds a weapon damage die of the listed size. Roll this "
-                              "after doubling the weapon's damage. This increases to two dice if the weapon has a "
-                              "greater striking rune and three dice if the weapon has a major striking rune. For "
-                              "instance, a rapier with a greater striking rune deals 2d8 extra piercing damage on a "
-                              "critical hit. An ability that changes the size of the weapon's normal damage dice "
-                              "doesn't change the size of its deadly die.", "Weapon")
+traitDEADLY10 = Trait("Deadly", "On a critical hit, the weapon adds a weapon damage d10 die . Roll this "
+                                "after doubling the weapon's damage. This increases to two dice if the weapon has a "
+                                "greater striking rune and three dice if the weapon has a major striking rune. For "
+                                "instance, a rapier with a greater striking rune deals 2d8 extra piercing damage on a "
+                                "critical hit. An ability that changes the size of the weapon's normal damage dice "
+                                "doesn't change the size of its deadly die.", "Weapon")
 traitDISARM = Trait("Disarm", "You can use this weapon to Disarm with the Athletics skill even if you don't have a "
                               "free hand. This uses the weapon's reach (if different from your own) and adds the "
                               "weapon's item bonus to attack rolls (if any) as an item bonus to the Athletics check. "
