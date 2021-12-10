@@ -9,7 +9,7 @@ class Racket(Entity):
         self.skills = args[2]  # list of Skills
         self.statChoices = args[3]  # from Variables
         self.actions = args[4]  # list of Actions
-        self.proficiency = args[5]  # list of BaseProficiencies
+        self.bProficiency = args[5]  # list of BaseProficiencies
 
 
 racket = Racket(""
@@ -33,8 +33,8 @@ racketMASTERMIND = Racket("MasterMind"
                           , [DexInt]
                           , []
                           , [])
-racketMASTERMIND.skills[0] = Proficiency.Trained
-racketMASTERMIND.skills[1][0] = Proficiency.Trained
-racketMASTERMIND.skills[1][1] = Proficiency.Trained
-racketMASTERMIND.skills[1][2] = Proficiency.Trained
-racketMASTERMIND.skills[1][3] = Proficiency.Trained
+racketMASTERMIND.skills[0].proficiency = Proficiency.Trained
+racketMASTERMIND.skills[1][0].proficiency = Proficiency.Trained
+racketMASTERMIND.skills[1][1].proficiency = Proficiency.Trained
+racketMASTERMIND.skills[1][2].proficiency = Proficiency.Trained
+racketMASTERMIND.skills[1][3].proficiency = Proficiency.Trained

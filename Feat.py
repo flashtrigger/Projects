@@ -81,7 +81,7 @@ featEXPERIENCEDSMUGGLER = Feat("Experienced Smuggler"
                                , [traitGENERAL, traitSKILL]
                                , []
                                , [])
-featEXPERIENCEDSMUGGLER.prerequisites[0].proficiency.name = "Trained"
+featEXPERIENCEDSMUGGLER.prerequisites[0].proficiency = Proficiency.Trained
 
 featHUNTEDSHOT = Feat("Hunted Shot"
                       , "You take two quick shots against the one you hunt. Make two Strikes against your prey with "
@@ -200,14 +200,20 @@ featSHIELDBLOCK = Feat("Shield Block"
                        , []
                        , [actionSHIELDBLOCK])
 
-# TODO: featUNCONETIONALWEAPONRY
-featUNCONETIONALWEAPONRY = Feat(""
-                                , ""
-                                , 1
-                                , []
-                                , []
-                                , []
-                                , [])
+featUNCONVENTIONALWEAPONRY = Feat("Unconventional Weaponry"
+                                  , "You've familiarized yourself with a particular weapon, potentially from another "
+                                    "ancestry or culture. Choose an uncommon simple or martial weapon with a trait "
+                                    "corresponding to an ancestry (such as dwarf, goblin, or orc) or that is common "
+                                    "in another culture. You gain access to that weapon, and for the purpose of "
+                                    "determining your proficiency, that weapon is a simple weapon.\nIf you are "
+                                    "trained in all martial weapons, you can choose an uncommon advanced weapon with "
+                                    "such a trait. You gain access to that weapon, and for the purpose of determining "
+                                    "your proficiency, that weapon is a martial weapon. "
+                                  , 1
+                                  , []
+                                  , [traitHUMAN]
+                                  , []
+                                  , [])
 
 feat = Feat(""
             , ""

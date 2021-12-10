@@ -11,7 +11,22 @@ class Proficiency(Enum):  # DONE Phase 1!
     Legendary = 8
 
 
+# size
+class Size(Enum):
+
+    Tiny = 1
+    Small = 2
+    Medium = 3
+    Large = 4
+    Huge = 5
+    Gargantuan = 6
+
+
 # stat pick options
+Dex = ["Dexterity"]
 DexInt = ["Dexterity", "Intelligence"]
 Free = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
-StrDex = ["Strength, Dexterity"]
+Str = ["Strength"]
+StrDex = ["Strength", "Dexterity"]
+
+# p2TODO: build array linking weapon group to specialization effect

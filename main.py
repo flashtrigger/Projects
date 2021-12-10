@@ -1,6 +1,13 @@
-import Functions as Foo
-from Trait import *
+from Functions import build
+import pickle
+# TODO: Initialize PC attributes, load, Tkinter
 
-Foo.test(traitRANGER)
+testPC = pickle.load(open("FighterBarb.pickle", "rb"))
 
-# TODO: Initialize PC, pickle, load, Tkinter
+# transient function making the changes I want at this moment
+build(testPC)
+
+print(str(testPC.HP))
+
+
+pickle.dump(testPC, open("FighterBarb.pickle", "wb"))

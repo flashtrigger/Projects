@@ -1,4 +1,3 @@
-from Entity import Entity
 from Trait import *
 
 

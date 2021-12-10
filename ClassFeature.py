@@ -11,6 +11,12 @@ class ClassFeature(Entity):
         self.functions = None  # method that updates character i.e addFeat, upgrade skill etc p2
 
 
+# Barbarian
+featureRAGE = ClassFeature("Rage"
+                           , "You gain the Rage action, which lets you fly into a frenzy."
+                           , 1)
+featureRAGE.actions = [actionRAGE]
+
 # Fighter
 featureATTACKOPPORTUNITY = ClassFeature("Attack of Opportunity"
                                         , "Ever watchful for weaknesses, you can quickly attack foes that leave an "
@@ -41,11 +47,6 @@ featureSURPRISEATTACK = ClassFeature("Surprise Attack"
                                        "combat, if you roll Deception or Stealth for initiative, creatures that "
                                        "haven’t acted are flat-footed to you. "
                                      , 1)
-
-featureRAGE = ClassFeature("Rage"
-                           , "You gain the Rage action, which lets you fly into a frenzy."
-                           , 1)
-featureRAGE.actions = [actionRAGE]
 
 feature = ClassFeature(""
                        , ""

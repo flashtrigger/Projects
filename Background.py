@@ -34,8 +34,10 @@ backgroundMARTIALADEPT = Background("Martial Adept"
                                       "monastery, an elite military academy, or the local branch of a prestigious "
                                       "mercenary organization. "
                                     , [StrDex, Free]
-                                    , [[skillACROBATICS, skillATHLETICS]]
+                                    , [[skillACROBATICS, skillATHLETICS]]  # if list in list choose
                                     , "Warfare"
-                                    , [[featCATFALL, featQUICKJUMP]]
+                                    , [[featCATFALL, featQUICKJUMP]]  # if list in list choose
                                     , [traitCOMMON]
                                     , [])
+backgroundMARTIALADEPT.skills[0][0].proficiency = Proficiency.Trained
+backgroundMARTIALADEPT.skills[0][1].proficiency = Proficiency.Trained

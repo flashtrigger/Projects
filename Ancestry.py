@@ -1,6 +1,5 @@
-from Entity import Entity
+from Trait import *
 from Variables import *
-from Trait import *  # DONE Phase 1!
 
 
 class Ancestry(Entity):
@@ -9,7 +8,7 @@ class Ancestry(Entity):
         Entity.__init__(self, *args)
         self.traits = args[2]  # list of Traits
         self.HP = args[3]  # integer
-        self.size = args[4]
+        self.size = args[4]  # size class
         self.speed = args[5]  # integer
         self.abilityBoosts = args[6]  # list of strings
         self.abilityFlaws = args[7]  # list of strings
@@ -20,10 +19,10 @@ class Ancestry(Entity):
 
 
 ancestryHUMAN = Ancestry("Human"
-                         , "Human"
+                         , "Huma-n"
                          , [traitHUMAN, traitHUMANOID]
                          , 8
-                         , "Medium"
+                         , Size.Medium
                          , 25
                          , [Free, Free]
                          , []
@@ -37,6 +36,7 @@ ancestry = Ancestry(""
                     , []
                     , 0
                     , "Medium"
+                    , 0
                     , []
                     , []
                     , ["Common"]
