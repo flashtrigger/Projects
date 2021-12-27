@@ -1,3 +1,4 @@
+import copy
 from SkillAction import *
 from Variables import Proficiency
 
@@ -7,9 +8,9 @@ class Skill(Entity):
     def __init__(self, *args):
 
         Entity.__init__(self, *args)
-        self.stat = args[1]
+        self.stat = args[2]
         self.proficiency = Proficiency.Untrained
-        self.bonus = 0
+        self.bonus = 0  # TODO: calculate bonus function
         self.actions = args[3]  # list of actions
 
 
@@ -106,6 +107,10 @@ skillTHIEVERY = Skill("Thievery"
                       , "You are trained in a particular set of skills favored by thieves and miscreants", "Dexterity"
                       , [actionPALMOBJECT, actionSTEAL, actionDISABLEDEVICE, actionPICKLOCK])
 
-skillPACKAGE = [skillACROBATICS, skillARCANA, skillATHLETICS, skillCRAFTING, skillDECEPTION, skillDIPLOMACY,
-                skillINTIMIDATION, skillLORE, skillMEDICINE, skillNATURE, skillOCCULTISM, skillPERFORMANCE,
-                skillRELIGION, skillSOCIETY, skillSTEALTH, skillSURVIVAL, skillTHIEVERY]
+skillPACKAGE = [copy.deepcopy(skillACROBATICS), copy.deepcopy(skillARCANA), copy.deepcopy(skillATHLETICS),
+                copy.deepcopy(skillCRAFTING), copy.deepcopy(skillDECEPTION), copy.deepcopy(skillDIPLOMACY),
+                copy.deepcopy(skillINTIMIDATION), copy.deepcopy(skillLORE), copy.deepcopy(skillMEDICINE),
+                copy.deepcopy(skillNATURE), copy.deepcopy(skillOCCULTISM), copy.deepcopy(skillPERFORMANCE),
+                copy.deepcopy(skillRELIGION), copy.deepcopy(skillSOCIETY), copy.deepcopy(skillSTEALTH),
+                copy.deepcopy(skillSURVIVAL), copy.deepcopy(skillTHIEVERY)]
+

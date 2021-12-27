@@ -765,9 +765,9 @@ activityCOERCE = SkillAction("Coerce"
                                "Intimidation check against the target's Will DC, modified by any circumstances the GM "
                                "determines. The attitudes referenced in the effects below are summarized in the "
                                "Changing Attitudes sidebar and described in full in the Conditions page. "
+                             , None
                              , [traitAUDITORY, traitCONCENTRATE, traitEMOTION, traitEXPLORATION, traitLINGUISTIC,
                                 traitMENTAL]
-                             , None
                              , "The target refuses to comply, becomes hostile if they weren't already, and can’t be "
                                "Coerced by you for at least 1 week. "
                              , "The target doesn't do what you say, and if they were not already unfriendly or "

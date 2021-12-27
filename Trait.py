@@ -7,6 +7,9 @@ class Trait(Entity):  # DONE Phase 1?
         Entity.__init__(self, *args)
         self.type = args[2]
 
+    def __deepcopy__(self, memo):  # so no copies made when containing object deep copied
+        return self
+
 
 # P3TODO: untyped traits
 traitARCHETYPE = Trait("Archetype", "This feat belongs to an archetype.", "Untyped")

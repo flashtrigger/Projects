@@ -11,7 +11,7 @@ class Background(Entity):  # DONE?
         self.abilityBoosts = args[2]  # list of choices
         self.skills = args[3]  # list of skills
         self.lore = args[4]
-        self.feat = args[5]  # list of Feats
+        self.feats = args[5]  # list of Feats
         self.traits = args[6]  # list of Traits
         self.actions = args[7]  # list of Actions
 
@@ -21,7 +21,7 @@ backgroundCRIMINAL = Background("Criminal"
                                   "you lived a life of crime. You might have become an adventurer to seek redemption, "
                                   "to escape the law, or simply to get access to bigger and better loot. "
                                 , [DexInt, Free]
-                                , [skillSTEALTH]
+                                , [copy.deepcopy(skillSTEALTH)]
                                 , "Underworld"
                                 , [featEXPERIENCEDSMUGGLER]
                                 , [traitCOMMON]
@@ -34,9 +34,9 @@ backgroundMARTIALADEPT = Background("Martial Adept"
                                       "monastery, an elite military academy, or the local branch of a prestigious "
                                       "mercenary organization. "
                                     , [StrDex, Free]
-                                    , [[skillACROBATICS, skillATHLETICS]]  # if list in list choose
+                                    , [[copy.deepcopy(skillACROBATICS), copy.deepcopy(skillATHLETICS)]]
                                     , "Warfare"
-                                    , [[featCATFALL, featQUICKJUMP]]  # if list in list choose
+                                    , [[featCATFALL, featQUICKJUMP]]
                                     , [traitCOMMON]
                                     , [])
 backgroundMARTIALADEPT.skills[0][0].proficiency = Proficiency.Trained

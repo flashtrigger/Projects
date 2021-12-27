@@ -1,3 +1,5 @@
+import copy
+
 from Entity import Entity
 from Variables import Proficiency
 
@@ -39,21 +41,22 @@ proficiencyWILL.stat = "Wisdom"
 # spells
 proficiencySPELLATK = BaseProficiency("Spell Attacks", "", 2)
 proficiencySPELLATK.proficiency = Proficiency.Trained
-proficiencySPELLATK.stat = "Charisma"
 
 proficiencySPELLDC = BaseProficiency("Spell DCs", "", 2)
 proficiencySPELLDC.proficiency = Proficiency.Trained
-proficiencySPELLDC.stat = "Charisma"
 
 # all basic proficiencies
-proficiencyALLBASIC = [proficiencyLIGHT, proficiencyMEDIUM, proficiencyHEAVY, proficiencyUNARMORED, proficiencySIMPLE
-                       , proficiencyMARTIAL, proficiencyADVANCED, proficiencyUNARMED]
+proficiencyALLBASIC = [copy.deepcopy(proficiencyLIGHT), copy.deepcopy(proficiencyMEDIUM),
+                       copy.deepcopy(proficiencyHEAVY), copy.deepcopy(proficiencyUNARMORED),
+                       copy.deepcopy(proficiencySIMPLE), copy.deepcopy(proficiencyMARTIAL),
+                       copy.deepcopy(proficiencyADVANCED), copy.deepcopy(proficiencyUNARMED)]
 
-proficiencyALLSAVES = [proficiencyFORT, proficiencyREF, proficiencyWILL]
+proficiencyALLSAVES = [copy.deepcopy(proficiencyFORT), copy.deepcopy(proficiencyREF), copy.deepcopy(proficiencyWILL)]
 
-proficiencySPELLS = [proficiencySPELLATK, proficiencySPELLDC]
+proficiencyINNATESPELLS = [copy.deepcopy(proficiencySPELLATK), copy.deepcopy(proficiencySPELLDC)]
 
-proficiencyALL = [proficiencyALLBASIC, proficiencyALLSAVES, proficiencySPELLS]
+proficiencyALL = [copy.deepcopy(proficiencyALLBASIC), copy.deepcopy(proficiencyALLSAVES),
+                  copy.deepcopy(proficiencyINNATESPELLS)]
 
 # individual weapon Proficiencies
 proficiencyRAPIER = BaseProficiency("Rapier", "Proficiency with Rapier", 0)
@@ -65,6 +68,7 @@ proficiencySHORTBOW.proficiency = Proficiency.Trained
 proficiencySHORTSWORD = BaseProficiency("Shortsword", "Proficiency with Shortsword", 0)
 proficiencySHORTSWORD.proficiency = Proficiency.Trained
 
-proficiencyROGUE = [proficiencyRAPIER, proficiencySAP, proficiencySHORTBOW, proficiencySHORTSWORD]
+proficiencyROGUE = [copy.deepcopy(proficiencyRAPIER), copy.deepcopy(proficiencySAP), copy.deepcopy(proficiencySHORTBOW),
+                    copy.deepcopy(proficiencySHORTSWORD)]
 
 proficiency = BaseProficiency("", "Proficiency with ", 0)

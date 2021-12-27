@@ -13,6 +13,7 @@ class Armor(ACItem):  # DONE Phase 1!
 
 
 # name, category, subcategory, bulk, value, level, traits, actions, AC, Speed-, Armor inputs
-armor = Armor("Name", "Category", "Subcategory", 0.0, 0.00, 1, [], [], 0, 0, 0, 0, "group", 0)
+armor = Armor("Name", "desc", "Category", "Subcategory", 0.0, 0.00, 1, [], [], 0, 0, 0, 0, "group", 0)
 
+armorLEATHER = Armor("Leather", "", "Armor", "Light", 1.0, 2.00, 1, [], [], 1, 0, 4, -1, "Leather", 10)
 armorSTUDDEDLEATHER = Armor("Studded Leather", "", "Armor", "Light", 1.0, 3.00, 1, [], [], 2, 0, 3, -1, "Leather", 12)

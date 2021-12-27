@@ -1,5 +1,6 @@
 from BaseProficiency import *
 from ClassFeature import *
+from Feat import *
 from HunterEdge import *
 from Instinct import *
 from Racket import *
@@ -17,10 +18,11 @@ class Class(Entity):
         self.specialty = args[4]  # class ability or null
         self.specialtyList = None
         self.classFeatures = args[5]  # list of class abilities
-        self.proficiencies = proficiencyALL
-        self.skills = skillPACKAGE
+        self.proficiencies = copy.deepcopy(proficiencyALL)
+        self.skills = copy.deepcopy(skillPACKAGE)
         self.baseSkills = args[6]  # integer
         self.perception = args[7]  # Proficiency
+        self.feats = []
 
 
 # p3TODO: input all classes
@@ -43,7 +45,7 @@ classBARBARIAN.skills[2].proficiency = Proficiency.Trained  # athletics
 
 classFIGHTER = Class("Fighter", "", StrDex, 10, None, [featureATTACKOPPORTUNITY], 3, Proficiency.Expert)
 classFIGHTER.cProficiency = Proficiency.Trained
-for x in classFIGHTER.proficiencies[0]:
+for x in range(0, (len(classFIGHTER.proficiencies[0])-1)):
     classFIGHTER.proficiencies[0][x].proficiency = Proficiency.Trained
 classFIGHTER.proficiencies[0][4].proficiency = Proficiency.Expert
 classFIGHTER.proficiencies[0][5].proficiency = Proficiency.Expert
@@ -52,6 +54,7 @@ classFIGHTER.proficiencies[1][0].proficiency = Proficiency.Expert
 classFIGHTER.proficiencies[1][1].proficiency = Proficiency.Expert
 classFIGHTER.proficiencies[1][2].proficiency = Proficiency.Trained
 classFIGHTER.skills[2].proficiency = Proficiency.Trained  # athletics
+classFIGHTER.feats = [featSHIELDBLOCK]
 # p2TODO: should be choice between acrobatics and athletics
 
 classRANGER = Class("Ranger", "", StrDex, 10, "Hunter's Edge", [featureHUNTPREY], 4, Proficiency.Trained)
@@ -80,4 +83,4 @@ classROGUE.proficiencies[1][0].proficiency = Proficiency.Trained
 classROGUE.proficiencies[1][1].proficiency = Proficiency.Expert
 classROGUE.proficiencies[1][2].proficiency = Proficiency.Expert
 classROGUE.skills[14].proficiency = Proficiency.Trained  # stealth
-classROGUE.proficiencies.append(proficiencyROGUE)
+classROGUE.proficiencies.append(copy.deepcopy(proficiencyROGUE))

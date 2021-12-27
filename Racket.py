@@ -29,7 +29,8 @@ racketMASTERMIND = Racket("MasterMind"
                             "successfully identify a creature using Recall Knowledge, that creature is flat-footed "
                             "against your attacks until the start of your next turn; if you critically succeed, "
                             "it's flat-footed against your attacks for 1 minute. "
-                          , [skillSOCIETY, [skillARCANA, skillNATURE, skillOCCULTISM, skillRELIGION]]
+                          , [copy.deepcopy(skillSOCIETY), [copy.deepcopy(skillARCANA), copy.deepcopy(skillNATURE),
+                                                           copy.deepcopy(skillOCCULTISM), copy.deepcopy(skillRELIGION)]]
                           , [DexInt]
                           , []
                           , [])

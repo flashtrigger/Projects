@@ -19,7 +19,7 @@ featARCANESENSE = Feat("Arcane Sense"
                          "detect magic at will as an arcane innate spell. If you’re a master in Arcana, the spell is "
                          "heightened to 3rd level; if you’re legendary, it is heightened to 4th level. "
                        , 1
-                       , [skillARCANA]
+                       , [copy.deepcopy(skillARCANA)]
                        , [traitGENERAL, traitSKILL]
                        , [spellDETECTMAGIC_AS]
                        , [])
@@ -31,7 +31,7 @@ featCATFALL = Feat("Catfall"
                      "Acrobatics, treat them as 50 feet shorter. If you’re legendary in Acrobatics, you always land "
                      "on your feet and don’t take damage, regardless of the distance of the fall. "
                    , 1
-                   , [skillACROBATICS]
+                   , [copy.deepcopy(skillACROBATICS)]
                    , [traitGENERAL, traitSKILL]
                    , []
                    , [])
@@ -63,6 +63,16 @@ featDRAGONSPITE = Feat("Dragon Spit: Electric"
                        , [spellELECTRICARC_DS]
                        , [])
 
+featEXACTINGSTRIKE = Feat("Exacting Strike"
+                          , "You make a controlled attack, fully accounting for your momentum. Make a Strike. "
+                            "The Strike gains the following failure effect.\nFailure: This attack does not count "
+                            "toward your multiple attack penalty. "
+                          , 1
+                          , []
+                          , [traitFIGHTER, traitPRESS]
+                          , []
+                          , [actionEXACTINGSTRIKE])
+
 featEXPERIENCEDSMUGGLER = Feat("Experienced Smuggler"
                                , "You often smuggle things past the authorities. When the GM rolls your Stealth check "
                                  "to see if a passive observer notices a small item you have concealed, the GM uses "
@@ -77,7 +87,7 @@ featEXPERIENCEDSMUGGLER = Feat("Experienced Smuggler"
                                  "with the Underworld Lore with tasks of your level -1 (instead of the normal level "
                                  "-2). "
                                , 1
-                               , [skillSTEALTH]
+                               , [copy.deepcopy(skillSTEALTH)]
                                , [traitGENERAL, traitSKILL]
                                , []
                                , [])
@@ -98,7 +108,7 @@ featINTIMIDATINGGLARE = Feat("Intimidating Glare"
                                "trait and gains the visual trait, and you don’t take a penalty if the creature "
                                "doesn't understand your language. "
                              , 1
-                             , [skillINTIMIDATION]
+                             , [copy.deepcopy(skillINTIMIDATION)]
                              , [traitGENERAL, traitSKILL]
                              , []
                              , [])  # p2TODO: alternate actionDEMORALIZE
@@ -157,7 +167,7 @@ featORCFEROCITY = Feat("Orc Ferocity"
                        , [actionORCFEROCITY])
 
 # p3TODO: featQUICKJUMP
-featQUICKJUMP = Feat(""
+featQUICKJUMP = Feat("Quick Jump"
                      , ""
                      , 1
                      , []

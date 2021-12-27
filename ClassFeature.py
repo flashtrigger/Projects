@@ -7,7 +7,7 @@ class ClassFeature(Entity):
     def __init__(self, *args):
         Entity.__init__(self, *args)
         self.level = args[2]  # integer
-        self.actions = None  # list of Actions
+        self.actions = []  # list of Actions
         self.functions = None  # method that updates character i.e addFeat, upgrade skill etc p2
 
 

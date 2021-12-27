@@ -1,3 +1,5 @@
+import copy
+
 from Trait import *  # p2TODO: remove unnecessary imports all around
 
 
@@ -284,6 +286,15 @@ actionTAKECOVER = Action("Take Cover"
                            "or are prone. "
                          , None)
 
+actionsBASIC = [[copy.deepcopy(actionAID), "Basic"], [copy.deepcopy(actionCRAWL), "Basic"],
+                [copy.deepcopy(actionDELAY), "Basic"], [copy.deepcopy(actionDROPPRONE), "Basic"],
+                [copy.deepcopy(actionESCAPE), "Basic"], [copy.deepcopy(actionINTERACT), "Basic"],
+                [copy.deepcopy(actionLEAP), "Basic"], [copy.deepcopy(actionREADY), "Basic"],
+                [copy.deepcopy(actionRELEASE), "Basic"], [copy.deepcopy(actionSEEK), "Basic"],
+                [copy.deepcopy(actionSENSEMOTIVE), "Basic"], [copy.deepcopy(actionSTAND), "Basic"],
+                [copy.deepcopy(actionSTEP), "Basic"], [copy.deepcopy(actionSTRIDE), "Basic"],
+                [copy.deepcopy(actionSTRIKE), "Basic"], [copy.deepcopy(actionTAKECOVER), "Basic"]]
+
 # specialty basic
 actionAVERTGAZE = Action("Avert gaze"
                          , "You avert your gaze from danger. You gain a +2 circumstance bonus to saves against visual "
@@ -374,6 +385,10 @@ actionRAISESHIELD = Action("Raise a Shield"
                            , "You are wielding a shield."
                            , None)
 
+actionsSPECIAL = [[copy.deepcopy(actionAVERTGAZE), "Special"], [copy.deepcopy(actionDISMISS), "Special"],
+                  [copy.deepcopy(actionGRABANEDGE), "Special"], [copy.deepcopy(actionMOUNT), "Special"],
+                  [copy.deepcopy(actionPOINTOUT), "Special"], [copy.deepcopy(actionRAISESHIELD), "Special"]]
+
 # class actions
 # Barbarian
 actionRAGE = Action("Rage"
@@ -450,6 +465,23 @@ actionDOUBLESLICE = Action("Double Slice"
                            , None
                            , "You are wielding two melee weapons, each in a different hand."
                            , None)
+
+# Exacting Strike
+actionEXACTINGSTRIKE = Action("Exacting Strike"
+                              , "You attack with a weapon you're wielding or with an unarmed attack, targeting one "
+                                "creature within your reach (for a melee attack) or within range (for a ranged "
+                                "attack). Roll the attack roll for the weapon or unarmed attack you are using, "
+                                "and compare the result to the target creature's AC to determine the effect. See "
+                                "Attack Rolls and Damage for details on calculating your attack and damage rolls. "
+                              , 1
+                              , [traitATTACK]
+                              , None
+                              , "This attack does not count toward your multiple attack penalty."
+                              , "You deal damage according to the weapon or unarmed attack, including any modifiers, "
+                                "bonuses, and penalties you have to damage. "
+                              , "As success, but you deal double damage."
+                              , None
+                              , None)
 
 # Hunted Shot
 actionHUNTEDSHOT = Action("Hunted Shot"

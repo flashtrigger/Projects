@@ -19,7 +19,7 @@ class Ancestry(Entity):
 
 
 ancestryHUMAN = Ancestry("Human"
-                         , "Huma-n"
+                         , "Human"
                          , [traitHUMAN, traitHUMANOID]
                          , 8
                          , Size.Medium
