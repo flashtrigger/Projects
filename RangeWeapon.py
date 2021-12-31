@@ -8,8 +8,8 @@ class RangeWeapon(Weapon):
 
     def __init__(self, *args):
         Weapon.__init__(self, *args)
-        self.range = args[14]
-        self.reload = args[15]
+        self.range = args[13]
+        self.reload = args[14]
 
 
 weapon = RangeWeapon(""
@@ -17,7 +17,7 @@ weapon = RangeWeapon(""
                      , "", "", 0.0, 0.00, 1
                      , [], []
                      , "", "", "", 1
-                     , "", 10, 0)
+                     , "", 1, 10, 0)
 
 weaponSHORTBOW = RangeWeapon("Shortbow"
                              , "This smaller bow is made of a single piece of wood and favored by skirmishers and "

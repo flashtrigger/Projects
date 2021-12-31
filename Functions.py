@@ -1,3 +1,5 @@
+import copy
+
 import inquirer
 
 from Ancestry import *
@@ -7,10 +9,11 @@ from Class import *
 from Heritage import *
 
 
-# 11/30/21 still alive - 12/9/21 ded - 12/9/21 repurposing for building PC object
+# 11/30/21 still alive - 12/9/21 ded - 12/9/21 repurposing for building PC object - 12/20 functions alive again
 
 
 # transient method modifying pickled object
+from Item import itemBACKPACK
 from RangeWeapon import weaponSHORTBOW
 from Shield import shieldSTEEL
 from Weapon import weaponGNOMEFLICKMACE, weaponDAGGER
@@ -40,11 +43,15 @@ def build(this):
     this.feats.append(featDRAGONSPITE)
     this.feats.append(featINTIMIDATINGGLARE)
     this.feats.append(featEXACTINGSTRIKE)
-    this.worn.append(armorLEATHER)
-    this.worn.append(weaponGNOMEFLICKMACE)
-    this.worn.append(shieldSTEEL)
-    this.worn.append(weaponSHORTBOW)
-    this.worn.append(weaponDAGGER)
+    this.equipment.append(copy.deepcopy(armorLEATHER))
+    this.equipment.append(copy.deepcopy(weaponGNOMEFLICKMACE))
+    this.equipment.append(copy.deepcopy(shieldSTEEL))
+    this.equipment.append(copy.deepcopy(weaponSHORTBOW))
+    this.equipment.append(copy.deepcopy(weaponDAGGER))
+    this.equipment.append(copy.deepcopy(itemBACKPACK))
+    this.worn[0].equip(this.equipment[0])
+    this.worn[1].equip(this.equipment[2])
+    this.worn[2].equip(this.equipment[1])
 
 
 def getChoice(choices, theMessage):
@@ -55,10 +62,6 @@ def getChoice(choices, theMessage):
     answers = inquirer.prompt(questions)
     pick = answers["size"]
     return pick
-
-
-def __eq__(self, other):
-    return self.name == other.name
 
 
 # adds an action to calling feat, skill, ability # depreciated

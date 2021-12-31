@@ -13,17 +13,19 @@ build(testPC)
 # testPC.buildSkills() # working
 # testPC.buildBaseProfs(1) # working
 # testPC.buildBaseProfs(-1) # working
-testPC.buildActions()
+# testPC.buildActions()  # working
+# testPC.displayWorn()  # working
+# testPC.updateBulk()  # working
 
-for each in testPC.actionList:
-    for element in each:
-        print(element[0].name)
-    print("\n\n")
-
-for each in testPC.activityList:
-    for element in each:
-        print(element[0].name)
-    print("\n\n")
+# for each in testPC.actionList:
+#     for element in each:
+#         print(element[0].name)
+#     print("\n\n")
+#
+# for each in testPC.activityList:
+#     for element in each:
+#         print(element[0].name)
+#     print("\n\n")
 
 # print(str(testPC.stats[0][0]) + ": " + str(testPC.stats[0][1]) + " - Mod: " + str(testPC.stats[0][2]))
 # print(str(testPC.stats[1][0]) + ": " + str(testPC.stats[1][1]) + " - Mod: " + str(testPC.stats[1][2]))

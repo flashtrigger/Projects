@@ -7,7 +7,7 @@ class Currency(Entity):  # DONE Phase 1!
 
         Entity.__init__(self, *args)
         self.value = args[3]  # float (in gold pieces)
-        self.bulk = args[4]  # float
+        self.bulk = round(args[4], 3)  # float
 
 
 #  standard coinage

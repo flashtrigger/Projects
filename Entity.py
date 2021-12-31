@@ -12,4 +12,7 @@ class Entity:
         print(self.name)
         text = tr.fill(self.description)
         print(text + "\n\n")
+
+    def __eq__(self, other):
+        return self.name == other.name
         

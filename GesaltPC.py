@@ -1,13 +1,17 @@
 import math
 
+from ACitem import ACItem
 from Action import *
+from Armor import Armor
 from BaseProficiency import *
 from Class import Class
+from EquipSlot import *
 from Feat import Feat
 import Functions as Foo
+from RangeWeapon import RangeWeapon
 from Skill import *
-from Variables import *
 from Trait import *
+from Variables import *
 
 
 def compareSkills(current, new, skillCount):
@@ -40,16 +44,17 @@ class GesaltPC(Entity):
         self.stats = [["Strength", 0, 0], ["Dexterity", 0, 0], ["Constitution", 0, 0],
                       ["Intelligence", 0, 0], ["Wisdom", 0, 0], ["Charisma", 0, 0]]
         self.baseProficiencies, self.saves = copy.deepcopy(proficiencyALLBASIC), copy.deepcopy(proficiencyALLSAVES)
-        self.feats, self.skills, self.equipment, self.worn = [], copy.deepcopy(skillPACKAGE), [], []
+        self.feats, self.skills, self.equipment = [], copy.deepcopy(skillPACKAGE), []
+        self.worn = [slotARMOR, slotLEFTHAND, slotRIGHTHAND]
         self.actionList = [actionsBASIC, actionsSPECIAL, [], [], []]  # class/skills/feats
         self.activityList = [[], []]  # Downtime/Exploration
         self.AC, self.meleeATK, self.rangeATK, self.spellATK = 0, 0, 0, 0
-        self.bulkTotal = 0.0
+        self.bulkTotal, self.bulkMax, self.bulkEncumb = 0.0, 0, 0
 
     def updateMODS(self):
         for eachStat in self.stats:
             if eachStat[1] >= 10:
-                eachStat[2] = math.floor((eachStat[1]-10)/2)
+                eachStat[2] = math.floor((eachStat[1] - 10) / 2)
             elif eachStat[1] < 10:
                 eachStat[2] = math.ceil((eachStat[1] - 10) / 2)
 
@@ -160,7 +165,7 @@ class GesaltPC(Entity):
                                         i = compareSkills(theSkill, elem, i)
                 print("\n")
 
-        for x in range(1 , i+1):
+        for x in range(1, i + 1):
             untrained = []
             for skills in self.skills:
                 if skills.proficiency.value == 0:
@@ -169,7 +174,61 @@ class GesaltPC(Entity):
             pick = Foo.getChoice(untrained, "Pick a skill to train.")
             theSkill = next((j for j in self.skills if j.name == pick))
             theSkill.proficiency = Proficiency.Trained
-            print(theSkill.name + " is now " + theSkill.proficiency.name + ". You have " + str(i-x) + " more skills")
+            print(theSkill.name + " is now " + theSkill.proficiency.name + ". You have " + str(i - x) + " more skills")
+
+    def displayWorn(self):
+        for each in self.worn:
+            print(each.name)
+            if each.isFull:
+                print(each.item.name)
+            else:
+                print("Empty")
+            print("\n")
+
+    def updateBulk(self):
+        self.bulkMax = self.stats[0][2] + 10
+        self.bulkEncumb = self.bulkMax - 5
+        num = 0.0
+        for each in self.equipment:
+            num = num + each.bulk
+        self.bulkTotal = num
+        print("Current Bulk: " + str(round(self.bulkTotal, 3)) + "\nEncumbered: " + str(self.bulkEncumb) + "\nMax: " +
+              str(self.bulkMax))
+
+    def updateAC(self):
+        self.updateMODS()
+        ACmod = 0
+        PROFmod = 0
+        for each in self.worn:
+            if isinstance(each, ACItem):
+                ACmod = ACmod + each.AC
+            if type(each) == Armor:
+                for prof in self.baseProficiencies:
+                    if prof.name == each.subcategory:
+                        PROFmod = prof.proficiency.value
+        self.AC = 10 + self.stats[1][2] + ACmod + PROFmod
+        self.meleeATK = self.stats[0][2]
+
+    def updateATK(self, weapon):
+        self.updateMODS()
+        PROFmod = 0
+        if weapon.traits.__contains__(traitFINESSE) or isinstance(weapon, RangeWeapon):
+            STATmod = self.stats[1][2]
+        else:
+            STATmod = self.stats[0][2]
+        for prof in self.baseProficiencies:
+            if prof.name == weapon.subcategory:
+                PROFmod = prof.proficiency.value
+        bonus = STATmod + PROFmod
+        return bonus
+
+    def updateDAM(self, weapon):
+        self.updateMODS()
+        if isinstance(weapon, RangeWeapon):
+            bonus = self.stats[1][2]
+        else:
+            bonus = self.stats[0][2]
+        return bonus
 
 # P2TODO: addItems method
 # P2TODO: addTraits method
