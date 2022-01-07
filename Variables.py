@@ -21,7 +21,7 @@ class Proficiency(Enum):  # DONE Phase 1!
         else:
             print("Error: compared types are not same")
 
-    def __eq__(self, other):
+    def equals(self, other):
         if self.__class__ is other.__class__:
             return self.value == other.value
         else:
@@ -45,7 +45,7 @@ class Size(Enum):
         else:
             print("Error: compared types are not same")
 
-    def __eq__(self, other):
+    def equals(self, other):
         if self.__class__ is other.__class__:
             return self.value == other.value
         else:

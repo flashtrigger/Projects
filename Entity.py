@@ -13,6 +13,6 @@ class Entity:
         text = tr.fill(self.description)
         print(text + "\n\n")
 
-    def __eq__(self, other):
+    def equals(self, other):
         return self.name == other.name
         

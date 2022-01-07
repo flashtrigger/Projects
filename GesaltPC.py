@@ -14,22 +14,6 @@ from Trait import *
 from Variables import *
 
 
-def compareSkills(current, new, skillCount):
-    if new.name == current.name:
-        if current.proficiency.value.__lt__(new.proficiency.value):
-            current.proficiency = new.proficiency
-            print(current.name + " is now " + str(current.proficiency.name))
-        elif current.proficiency.__eq__(new.proficiency):
-            print(current.name + " is already " + str(new.proficiency.name))
-            if current.proficiency >= Proficiency.Trained:
-                pick = Foo.getChoice(yesNo, "Should another skill be added?")
-                if pick == "Yes":
-                    skillCount += 1
-        elif new.proficiency.__lt__(current.proficiency):
-            print(current.name + " is already better than" + str(new.proficiency.name))
-    return skillCount
-
-
 class GesaltPC(Entity):
 
     def __init__(self, *args):
@@ -40,23 +24,28 @@ class GesaltPC(Entity):
         self.size, self.senses = "", []
         self.classes = []
         self.level, self.speed, self.heroPoints, self.XP, self.HP = 1, 0, 0, 0, 0
-        self.spells = [["Innate", copy.deepcopy(proficiencyINNATESPELLS), "Charisma"]]
+        self.spells = [["Innate", copy.deepcopy(proficiencyINNATESPELLS), "Charisma", []]]
         self.stats = [["Strength", 0, 0], ["Dexterity", 0, 0], ["Constitution", 0, 0],
                       ["Intelligence", 0, 0], ["Wisdom", 0, 0], ["Charisma", 0, 0]]
         self.baseProficiencies, self.saves = copy.deepcopy(proficiencyALLBASIC), copy.deepcopy(proficiencyALLSAVES)
         self.feats, self.skills, self.equipment = [], copy.deepcopy(skillPACKAGE), []
         self.worn = [slotARMOR, slotLEFTHAND, slotRIGHTHAND]
-        self.actionList = [actionsBASIC, actionsSPECIAL, [], [], []]  # class/skills/feats
+        self.actionList = [copy.deepcopy(actionsBASIC), copy.deepcopy(actionsSPECIAL), [], [], []]  # class/skills/feats
         self.activityList = [[], []]  # Downtime/Exploration
-        self.AC, self.meleeATK, self.rangeATK, self.spellATK = 0, 0, 0, 0
+        self.AC = 0
+        self.perception, self.percBonus = Proficiency.Untrained, 0
         self.bulkTotal, self.bulkMax, self.bulkEncumb = 0.0, 0, 0
 
-    def updateMODS(self):
-        for eachStat in self.stats:
-            if eachStat[1] >= 10:
-                eachStat[2] = math.floor((eachStat[1] - 10) / 2)
-            elif eachStat[1] < 10:
-                eachStat[2] = math.ceil((eachStat[1] - 10) / 2)
+    def addItem(self, item, count):
+        bFound = False
+        for each in self.equipment:
+            if each.equals(item):
+                each.count = each.count + count
+                bFound = True
+                break
+        if not bFound:
+            self.equipment.append(copy.deepcopy(item))
+            self.addItem(item, (count-1))
 
     def buildActions(self):
         thisList = [self.classes, self.skills, self.feats]
@@ -119,7 +108,7 @@ class GesaltPC(Entity):
                         if currentProf.proficiency.__lt__(prof.proficiency):
                             currentProf.proficiency = prof.proficiency
                             print(currentProf.name + " is now " + currentProf.proficiency.name)
-                        elif currentProf.proficiency.__eq__(prof.proficiency):
+                        elif currentProf.proficiency.equals(prof.proficiency):
                             print(currentProf.name + " is already " + currentProf.proficiency.name)
                         else:
                             print(currentProf.name + " is better than " + prof.proficiency.name)
@@ -145,6 +134,10 @@ class GesaltPC(Entity):
                                     else:
                                         print("Feat already in list")
 
+    def buildPerception(self):
+        for each in self.classes:
+            Foo.compareProf(self.perception, each.perception, 0)
+
     def buildSkills(self):
         Lists = [self.classes, self.background]
         i = max(cl.baseSkills for cl in self.classes)
@@ -155,14 +148,14 @@ class GesaltPC(Entity):
                     if type(skill) == Skill:
                         for theSkill in self.skills:
                             if skill.name == theSkill.name:
-                                i = compareSkills(theSkill, skill, i)
+                                i = Foo.compareProf(theSkill, skill, i)
                     elif type(skill) == list:
                         choice = Foo.getChoice(skill, "Which skill do you desire?")
                         for theSkill in self.skills:
                             for elem in skill:
                                 if isinstance(elem, Skill):
                                     if elem.name == choice:
-                                        i = compareSkills(theSkill, elem, i)
+                                        i = Foo.compareProf(theSkill, elem, i)
                 print("\n")
 
         for x in range(1, i + 1):
@@ -185,15 +178,49 @@ class GesaltPC(Entity):
                 print("Empty")
             print("\n")
 
-    def updateBulk(self):
-        self.bulkMax = self.stats[0][2] + 10
-        self.bulkEncumb = self.bulkMax - 5
-        num = 0.0
-        for each in self.equipment:
-            num = num + each.bulk
-        self.bulkTotal = num
-        print("Current Bulk: " + str(round(self.bulkTotal, 3)) + "\nEncumbered: " + str(self.bulkEncumb) + "\nMax: " +
-              str(self.bulkMax))
+    def fullBuild(self):
+        self.updateMODS()
+        self.buildFeats()
+        self.buildSkills()
+        self.buildBaseProfs(1)
+        self.buildBaseProfs(-1)
+        self.buildActions()
+        self.updateBulk()
+        self.buildPerception()
+
+    def getATK(self, weapon):
+        self.updateMODS()
+        PROFmod = 0
+        if weapon.traits.__contains__(traitFINESSE) or isinstance(weapon, RangeWeapon):
+            STATmod = self.stats[1][2]
+        else:
+            STATmod = self.stats[0][2]
+        for prof in self.baseProficiencies:
+            if prof.name == weapon.subcategory:
+                PROFmod = prof.proficiency.value
+        bonus = STATmod + PROFmod
+        return bonus
+
+    def getDAM(self, weapon):
+        self.updateMODS()
+        if isinstance(weapon, RangeWeapon):
+            bonus = self.stats[1][2]
+        else:
+            bonus = self.stats[0][2]
+        return bonus
+
+    def getSpellATKDC(self, spellSource):
+        self.updateMODS()
+        bonus = 0
+        for each in self.stats:
+            if each[0] == spellSource[2]:
+                bonus = each[2]
+        ATK = spellSource[1][0] + bonus
+        DC = 10 + spellSource[1][1] + bonus
+        return ATK, DC  # spellATK, SpellDC = getSpellATKDC()
+
+    def setPercBonus(self):
+        self.percBonus = self.perception.value + self.stats[4][1]
 
     def updateAC(self):
         self.updateMODS()
@@ -207,28 +234,24 @@ class GesaltPC(Entity):
                     if prof.name == each.subcategory:
                         PROFmod = prof.proficiency.value
         self.AC = 10 + self.stats[1][2] + ACmod + PROFmod
-        self.meleeATK = self.stats[0][2]
 
-    def updateATK(self, weapon):
-        self.updateMODS()
-        PROFmod = 0
-        if weapon.traits.__contains__(traitFINESSE) or isinstance(weapon, RangeWeapon):
-            STATmod = self.stats[1][2]
-        else:
-            STATmod = self.stats[0][2]
-        for prof in self.baseProficiencies:
-            if prof.name == weapon.subcategory:
-                PROFmod = prof.proficiency.value
-        bonus = STATmod + PROFmod
-        return bonus
+    def updateBulk(self):
+        self.bulkMax = self.stats[0][2] + 10
+        self.bulkEncumb = self.bulkMax - 5
+        num = 0.0
+        for each in self.equipment:
+            num = num + each.bulk
+        self.bulkTotal = num
+        print("Current Bulk: " + str(round(self.bulkTotal, 3)) + "\nEncumbered: " + str(self.bulkEncumb) + "\nMax: " +
+              str(self.bulkMax))
 
-    def updateDAM(self, weapon):
-        self.updateMODS()
-        if isinstance(weapon, RangeWeapon):
-            bonus = self.stats[1][2]
-        else:
-            bonus = self.stats[0][2]
-        return bonus
+    def updateMODS(self):
+        for eachStat in self.stats:
+            if eachStat[1] >= 10:
+                eachStat[2] = math.floor((eachStat[1] - 10) / 2)
+            elif eachStat[1] < 10:
+                eachStat[2] = math.ceil((eachStat[1] - 10) / 2)
+
 
 # P2TODO: addItems method
 # P2TODO: addTraits method

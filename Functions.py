@@ -54,6 +54,24 @@ def build(this):
     this.worn[2].equip(this.equipment[1])
 
 
+# compares 2 proficiencies and improves if current is inferior
+def compareProf(current, new, skillCount):
+    if new.name == current.name:
+        if current.proficiency.value.__lt__(new.proficiency.value):
+            current.proficiency = new.proficiency
+            print(current.name + " is now " + str(current.proficiency.name))
+        elif current.proficiency.equals(new.proficiency):
+            print(current.name + " is already " + str(new.proficiency.name))
+            if current.proficiency >= Proficiency.Trained:
+                pick = getChoice(yesNo, "Should another skill be added?")
+                if pick == "Yes":
+                    skillCount += 1
+        elif new.proficiency.__lt__(current.proficiency):
+            print(current.name + " is already better than" + str(new.proficiency.name))
+    return skillCount
+
+
+# select from a list of choices
 def getChoice(choices, theMessage):
     options = []
     for element in choices:

@@ -13,6 +13,7 @@ class Item(Entity):  # DONE Phase 1!
         self.level = args[6]  # integer
         self.traits = args[7]  # list of Traits
         self.actions = args[8]  # list of Actions
+        self.count = 1
 
 
 itemBACKPACK = Item("Backpack"
