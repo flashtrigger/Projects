@@ -5,11 +5,11 @@ import PySimpleGUI as sg
 # TODO: Initialize PC attributes, load, Tkinter
 
 # testPC = pickle.load(open("FighterBarb.pickle", "rb"))
-# testPC = GesaltPC("FighterBarb", "Fighter/Spirit Barbarian")
+testPC = GesaltPC("FighterBarb", "Fighter/Spirit Barbarian")
 
 # transient function making the changes I want at this moment
-# build(testPC)
-# testPC.fullBuild()
+build(testPC)
+testPC.fullBuild()
 
 # for each in testPC.actionList:
 #     for element in each:
@@ -39,9 +39,9 @@ Char = pickle.load(open(values['fileName'], "rb"))
 
 sg.theme('DarkAmber')
 header = [[sg.T("Name", size=(15, 1)), sg.T("Alignment", size=(15, 1)), sg.T("Level", size=(5, 1))
-           , sg.T("XP", size=(5, 1))],
+          , sg.T("XP", size=(5, 1))],
           [sg.T(Char.name, size=(15, 1)), sg.T(Char.alignment, size=(17, 1)), sg.T(Char.level, size=(3, 1))
-           , sg.T(Char.XP, size=(5, 1))]]
+          , sg.T(Char.XP, size=(5, 1))]]
 
 statsBlock = [[sg.T("Attribute", size=(9, 1)), sg.T("Score", size=(5, 1)), sg.T("Mod", size=(3, 1))],
               [sg.T(Char.stats[0][0], size=(10, 1)), sg.T(str(Char.stats[0][1]), size=(5, 1))
