@@ -1,7 +1,21 @@
+import PyInquirer
+
 from DiceRoller import *
 import inquirer
+# from PyInquirer import *
+
+
+class Object(object):
+    pass
+
 
 yesNo = ["Yes", "No"]
+
+
+def getChoiceList(name, message, choices):
+    questions = [{'type': 'list', 'name': name, 'message': message, 'choices': choices}]
+    answer = PyInquirer.prompt(questions)
+    return answer
 
 
 def getChoice(choices, theMessage):
@@ -40,7 +54,7 @@ def common():
     return herb, amount
 
 
-def herbalism(environment, herbBonus):
+def herbalism(environment, bEnvToggle, herbBonus):
     success = (roll(1, 20, herbBonus) >= 15)
     herb, amount = "", 0
     if not success:
@@ -61,19 +75,19 @@ def herbalism(environment, herbBonus):
     elif environment == "Arctic":
         herb, amount = arctic(num)
     elif environment == "Coastal/Underwater":
-        herb, amount = coastWater(num, True)
+        herb, amount = coastWater(num, bEnvToggle)
     elif environment == "Desert":
         herb, amount = desert(num)
     elif environment == "Forest":
-        herb, amount = forest(num, True)
+        herb, amount = forest(num, bEnvToggle)
     elif environment == "Grasslands":
         herb, amount = grasslands(num)
     elif environment == "Hills":
         herb, amount = hills(num)
-    elif environment == "Mountain":
+    elif environment == "Mountains":
         herb, amount = mountain(num)
     elif environment == "Swamp":
-        herb, amount = swamp(num)
+        herb, amount = swamp(num, bEnvToggle)
 
     return herb, amount
 
@@ -97,19 +111,12 @@ def arctic(num):
         return "Voidroot", 1
 
 
-def coastWater(num, bStart):
-    if bStart:
-        coastal = getChoice(yesNo, "Choose yes if Coastal, no if underwater")
-        if coastal == "Yes":
-            coastal = True
-        else:
-            coastal = False
-    else:
-        coastal = False
+def coastWater(num, bCoastal):
+
     if num == 2:
         return "Hydrathistle", random.randint(1, 2)
     elif num == 3:
-        if coastal:
+        if bCoastal:
             return "Amanita Cap", 1
         else:
             number = roll(2, 6, 0)
@@ -119,13 +126,13 @@ def coastWater(num, bStart):
     elif num == 5:
         return "Chromus Slime", random.randint(1, 2)
     elif num == 9:
-        if coastal:
+        if bCoastal:
             return "Lavender Sprig", 1
         else:
             number = roll(2, 6, 0)
             return coastWater(number, False)
     elif num == 10:
-        if coastal:
+        if bCoastal:
             return "Blue Toadshade", 1
         else:
             number = roll(2, 6, 0)
@@ -155,15 +162,7 @@ def desert(num):
         return "Voidroot", 1
 
 
-def forest(num, bStart):
-    if bStart:
-        night = getChoice(yesNo, "Is it night")
-        if night == "Yes":
-            night = True
-        else:
-            night = False
-    else:
-        night = False
+def forest(num, bNight):
 
     if num == 2:
         return "Harrada Leaf", 1
@@ -180,7 +179,7 @@ def forest(num, bStart):
     elif num == 11:
         return "Blue Toadshade", 1
     elif num == 12:
-        if night:
+        if bNight:
             return "Wisp Stalks", 2
         else:
             number = roll(2, 6, 0)
@@ -244,9 +243,9 @@ def mountain(num):
         return "Primordial Balm", 1
 
 
-def swamp(num):
-    bRaining = getChoice(yesNo, "Is it raining")
-    if bRaining == "Yes":
+def swamp(num, bRaining):
+
+    if bRaining:
         thisNum = 2
     else:
         thisNum = 1
