@@ -43,7 +43,7 @@ def roll(num, die, mod):  # perfect? takes XdY+Z and outputs total
     return total
 
 
-def AtkRoller(theRoll, advantage, elvenAccuracy, critRange):
+def AtkRoller(theRoll, advantage, elvenAccuracy, critImmunity, critRange):
     theText = theRoll[0][0] + "-" + theRoll[0][1] + ": "
     if advantage:
         if elvenAccuracy:
@@ -57,8 +57,8 @@ def AtkRoller(theRoll, advantage, elvenAccuracy, critRange):
             thisRoll = max(roll1, roll2)
     else:
         thisRoll = roll(1, 20, int(theRoll[1][2]))
-    isCrit = (thisRoll - int(theRoll[1][2]) >= critRange)
-    theText = theText + str(thisRoll) + " - " + str(thisRoll - int(theRoll[1][2])) + " + " + theRoll[1][2]
+    isCrit = (thisRoll - int(theRoll[1][2]) >= critRange) and not critImmunity
+    theText = theText + str(thisRoll) + " = " + str(thisRoll - int(theRoll[1][2])) + " + " + theRoll[1][2]
     if isCrit:
         theText = theText + " " + "CRIT!"
 
@@ -67,7 +67,6 @@ def AtkRoller(theRoll, advantage, elvenAccuracy, critRange):
 
 def DamageRoller(theRoll, isCrit):
     theText = theRoll[0][0] + "-" + theRoll[0][1] + ": "
-    text2 = ""
     damageList = []
 
     for x in range(1, len(theRoll)):
@@ -82,9 +81,26 @@ def DamageRoller(theRoll, isCrit):
         if not match:
             damageList.append([theRoll[x][3], damage])
 
+    theText = theText + printDamageList(damageList)
+    return theText, damageList
+
+def combinedDamage(damageList1, damageList2):
+    for each2 in damageList2:
+        match = False
+        for each1 in damageList1:
+            if each2[0] == each1[0]:
+                each1[1] += each2[1]
+                match = True
+        if not match:
+            damageList1.append([each2[0], each2[1]])    
+    return damageList1
+
+def printDamageList(damageList):
     total = 0
+    text = ""
+    theText = ""
     for each in damageList:
         total = total + each[1]
-        text2 = text2 + str(each[1]) + " " + each[0] + " "
-    theText = theText + str(total) + ": " + text2
+        text = text + str(each[1]) + " " + each[0] + " "
+    theText = theText + str(total) + ": " + text
     return theText

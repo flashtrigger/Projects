@@ -1,53 +1,85 @@
 import random
 from DiceRoller import *
 
+advantage = bool(int(input("Enter '1' if attacking with advantage else 0: ")))
 
-Attack = []
-Damage = []
+unleash = 0
+unleash += int(input("Enter '1' to Unleash Incarnation else 0: ")) 
 
-attack = 1  # 1 Axe, 2 Gun, 3 Laser
-numAttacks = 2
+turnOne = int(input("Enter '1' if 1st turn else 0: "))
 
-if attack == 1:
-    Attack.append(["Battle Tax", "Attack"])
-    Attack.append(["1", "20", "10"])
-    Damage.append(["War Tax", "Damage"])
-    Damage.append(["1", "8", "6", "Slashing"])
-elif attack == 2:
-    Attack.append(["Auto Pistol", "Attack"])
-    Attack.append(["1", "20", "12"])
-    Damage.append(["Laser Pistol", "Damage"])
-    Damage.append(["2", "6", "6", "Piercing"])
-elif attack == 3:
-    Attack.append(["Laser Pistol", "Attack"])
-    Attack.append(["1", "20", "12"])
-    Damage.append(["Auto Pistol", "Damage"])
-    Damage.append(["3", "6", "6", "Radiant"])
+hasteActive = bool(int(input("If Hasted enter '1' else 0: ")))
+if hasteActive:
+    unleash += int(input("Enter '1' to Unleash Incarnation else 0: "))
 
+actionSurge = bool(int(input("Enter '1' to Action Surge else 0: ")))
+if actionSurge:
+    unleash += int(input("Enter '1' to Unleash Incarnation else 0: "))
 
+attackType = int(input("Choose Weapon: 1-Axe, 2-Gun, or 3-Laser: ")) 
+
+numAttacks = (2 + turnOne) + (int(actionSurge) * ((2 * int(actionSurge)) + turnOne)) + int(hasteActive) + unleash
+if attackType == 1:
+    twoWeapon = bool(int(input("If TWFing enter '1' else 0: ")))
+    alwaysSmite = bool(int(input("Enter '1' to enable non-crit Smiting else 0: ")))
+    if twoWeapon:
+        numAttacks *= 2
+if attackType in (2, 3):
+    bSS = bool(int(input("Enter '1' to activae SharpShooter else 0: ")))
+else:
+    bSS = False
+
+accuracyBonus = int(input("Enter the bonus from accuracy stance: "))
+
+critImmunity = bool(int(input("Enter '1' if enemy immune to crits else 0: ")))
+
+totalDamage = []
 for x in range(numAttacks):
-    bAmbush, cStrike, bSS, bAcc1, bAcc2 = False, False, False, False, False
-    xThunder, xLightning, xCold = False, False, False
-    smite1, smite2, smite3, smiteE = False, False, False, False
 
+    Attack = []
+    Damage = []
+
+    if attackType == 1:
+        Attack.append(["Battle Tax", "Attack"])
+        Attack.append(["1", "20", str(10 + accuracyBonus)])
+        Damage.append(["Battle Tax", "Damage"])
+        Damage.append(["1", "8", "7", "Slashing"])
+    elif attackType == 2:
+        Attack.append(["Auto Pistol", "Attack"])
+        Attack.append(["1", "20", str(11 + accuracyBonus)])
+        Damage.append(["Auto Pistol", "Damage"])
+        Damage.append(["2", "6", "7", "Piercing"])
+    elif attackType == 3:
+        Attack.append(["Laser Pistol", "Attack"])
+        Attack.append(["1", "20", str(11 + accuracyBonus)])
+        Damage.append(["Laser Pistol", "Damage"])
+        Damage.append(["3", "6", "7", "Radiant"])
     if bSS:
         Attack[1][2] = str(int(Attack[1][2]) - 5)
-    if bAcc1:
-        Attack[1][2] = str(int(Attack[1][2]) + 1)
-    if bAcc2:
-        Attack[1][2] = str(int(Attack[1][2]) + 2)
 
-    text, crit = AtkRoller(Attack, False, False, 20)
-    # text, crit = AtkRoller(warTaxAttack, True, False, 20)
-    print(text)
+    text, crit = AtkRoller(Attack, advantage, False, critImmunity, 20)
+    print("\n" + str(x + 1)+ ": "+ text)
 
-    if crit:
-        xThunder, xLightning, xCold, cStrike, = True, True, True, True,
-        smite1, smite2, smite3, smiteE = False, False, True, True
+    bAmbush, cStrike, bSmiting = bool(turnOne), False, False
+    xAcid, xCold, xFire, xLightning, xThunder  = False, False, False, False, False
 
-    if bAmbush:
-        Damage.append(["1", "8", "0", "BaseType"])
-    if bSS:
+    if (not critImmunity and crit) or alwaysSmite:
+        thanosMode = bool(int(input("Enter '1' to activate Thanos Mode else 0: ")))
+        if thanosMode:
+            xAcid, xCold, xFire, xLightning, xThunder, = True, True, True, True, True
+        
+        cStrike = bool(int(input("Enter '1' if spending BP for 1d6 else 0: ")))
+
+        if attackType == 1:
+            bSmiting = bool(int(input("Enter '1' to Smite else 0: ")))
+            if bSmiting:
+                smiteSlot = int(input("Enter the spell Slot used: "))
+                smiteE = int(input("Enter '1' if smiting Undead or Fiend else 0: "))
+                smiteSlot += smiteE
+
+    if (bAmbush and x == 0) or (bAmbush and actionSurge and x == 3):
+        Damage.append(["1", "8", "0", Damage[1][3]])
+    if bSS and attackType in (2, 3):
         Damage[1][2] = str(int(Damage[1][2]) + 10)
     if xThunder:
         Damage.append(["1", "4", "0", "Thunder"])
@@ -55,15 +87,17 @@ for x in range(numAttacks):
         Damage.append(["1", "4", "0", "Electricity"])
     if xCold:
         Damage.append(["1", "4", "0", "Cold"])
+    if xFire:
+        Damage.append(["1", "4", "0", "Fire"])
+    if xAcid:
+        Damage.append(["1", "4", "0", "Acid"])
     if cStrike:
-        Damage.append(["1", "6", "0", "BaseType"])
-    if smite1:
-        Damage.append(["2", "8", "0", "Radiant"])
-    if smite2:
-        Damage.append(["3", "8", "0", "Radiant"])
-    if smite3:
-        Damage.append(["4", "8", "0", "Radiant"])
-    if smiteE:
-        Damage.append(["1", "8", "0", "Radiant"])
+        Damage.append(["1", "6", "0", Damage[1][3]])
+    if bSmiting:
+        Damage.append([str(smiteSlot + 1), "8", "0", "Radiant"])
 
-    print(DamageRoller(Damage, crit))
+    textOutput, damageList = DamageRoller(Damage, crit)
+    print("\n" + str(x + 1)+ ": " + textOutput)
+    totalDamage = combinedDamage(totalDamage, damageList)
+
+print("Total Damage = " + printDamageList(totalDamage))
